@@ -40,18 +40,143 @@
     - form
     - artical
 
-
-5/26:
+----------------------------------------------------------------------
+### 5/26:
 
 1. 
 ```css
-<!-- width = border*2 + content + padding*2 -->
+/*  width = border*2 + content + padding*2 */
 
 box-sizing: border-box; 
 
-<!-- width = content -->
+/* width = content */
 
 box-sizing: content-box; 
 ```
 
 2. breakpoint 调试时要注意当时浏览器的显示比例。
+
+3. css reset
+```css
+*{
+    margin:0;
+    padding:0;
+}
+```
+
+4. css normalization
+
+5.  - inline css: hgihest priority
+    - id selector: highest priority
+
+6. static(`default`)/ absolute(`look up until a non-static element parent`) / relative(`相对原始位置`) / sticky(`导航缩放时内容不会聚集`) / fixed(`导航缩放时内容会聚集`)
+
+7. flex-grow/ flex-shrink
+
+8. from `float` => `flex`
+
+9. em/rem/%
+
+10. media query `调试时要注意当时浏览器的显示比例。`
+
+11. BEM naming
+    - [http://getbem.com/](http://getbem.com/)
+
+12. 
+
+
+----------------------------------------------------------------------
+### 5/27:
+
+1. I would like to know more about BEM naming, like when to use ‘-’, ‘__’ and ‘—’
+
+2. 
+    - inline:
+    - inline-block:
+    - block:
+
+3. css variables
+
+4. `primitive types`:string / number/ boolean /undefined /null
+
+5. null is object, but it is a primitive type.
+
+6. pass by value / pass by refernce
+
+7. compare undefined and null.
+```js
+
+```
+
+8. Maybe TypeScript can fix the coercion.
+
+9. 
+```js
+let obj1 = {};
+let obj2 = Object.create({});
+
+class MyObj{
+    constructor(name){
+        this.name = name;
+    }
+}
+
+let obj3 = new MyObj('hello');
+```
+
+10. prototype chain
+```js
+let obj = {name:'Dio'};
+
+function foo(input){
+    //case 1
+    input = {name:'dojo'};// create a new location
+
+    //case 2
+    input.name = 'dojo';// pass by reference
+
+    console.log(input);
+}
+foo(obj);
+console.log(obj);
+```
+
+11. let / const / var
+
+12. 
+- var - function scopr
+- let - block scope
+- const - block scope
+
+13. 
+- let / const cannot be hoinsted?
+- temporal dead zone: unreachable variable, only can use if it has been declaration.
+
+14. 
+```js
+// declaration, enable hoisting
+function hello(){
+
+}
+
+// expression, no hoisting
+const hello = function(){
+
+}
+// arrow, no hoisting
+const hello = ()=>{
+
+}
+```
+
+15. class will not be hoisted.
+
+16. construcotr function.
+```js
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+}
+
+let p = new Person('hello', 10);
+console.log(p);
