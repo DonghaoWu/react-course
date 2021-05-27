@@ -39,3 +39,19 @@
     - footer
     - form
     - artical
+
+
+5/26:
+
+1. 
+```css
+<!-- width = border*2 + content + padding*2 -->
+
+box-sizing: border-box; 
+
+<!-- width = content -->
+
+box-sizing: content-box; 
+```
+
+2. breakpoint 调试时要注意当时浏览器的显示比例。
