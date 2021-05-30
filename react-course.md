@@ -180,3 +180,11 @@ function Person(name, age){
 
 let p = new Person('hello', 10);
 console.log(p);
+
+```
+
+----------------------------------------------------------------------
+
+5/28
+
+1. 20 ppl per page.
