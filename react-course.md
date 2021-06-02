@@ -188,3 +188,434 @@ console.log(p);
 5/28
 
 1. 20 ppl per page.
+
+5/31
+
+6/1
+
+1. Constructor function / class
+
+2. 
+```js
+class Person{
+    #name;
+    #age;
+
+    constructor(name,age){
+        this.#name = name;
+        this.#age = age;
+    }
+    get name(){
+        return this.#name;
+    }
+    set name(newName){
+        this.#name = newName;
+    }
+    walk(){
+        console.log(this.#name, this.#age);
+    }
+}
+```
+
+3. prototype.
+
+```js
+Person.prototype === p.__proto__;
+```
+
+4. inheritance
+
+```js
+class Person {
+    #name;
+    #age;
+    constructor(name, age) {
+        this.#name = name;
+        this.#age = age;
+    }
+    get name() {
+        return this.#name;
+    }
+    set name(newName) {
+        this.#name = newName;
+    }
+    walk() {
+        console.log(this.#name + ' walk around the world! ' + this.#age);
+        console.log(this.#name, 'walk around the world!', this.#age);
+        console.log(`${this.#name} walk around the world! ${this.#age}`);
+    }
+}
+
+class Employee extends Person {
+    constructor(name, age, company) {
+        super(name, age);
+        this.company = company;
+    }
+    walk() {
+        console.log(name + ' instance 1 from employee class ');
+    }
+    walk(salary) {
+        console.log(this.#name + ' instance 2 from employee class ' + salary);
+    }
+}
+
+const e = new Employee('Dio', 200, 'Jump');
+console.log(e);
+e.walk();
+
+function Employee(name, age, company) {
+    const P = Person.bind(this);
+    P(name, age); // call apply bind
+    this.company = company;
+}
+Employee.prototype = Person.prototype;
+Employee.prototype.constructor = Employee;
+```
+
+5. apply / call
+
+6. poly-morph-ism
+
+```js
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    move() {
+        console.log('move');
+    }
+}
+class Fash extends Animal {
+    constructor(name) {
+        super(name);
+    }
+    move() {
+        return console.log(this.name + ' can swim');
+    }
+}
+class Bird extends Animal {
+    constructor(name) {
+        super(name);
+    }
+    move() {
+        return console.log(this.name + ' can fly');
+    }
+}
+class Monkey extends Animal {
+    constructor(name) {
+        super(name);
+    }
+    move() {
+        return console.log(this.name + ' can run');
+    }
+}
+
+const fish = new Fash('fish');
+const bird = new Bird('bird');
+const monkey = new Monkey('monkey');
+fish.move();
+bird.move();
+monkey.move();
+```
+
+7. abstraction
+```js
+class Circle {
+    #pi = 3.1415926; 
+    constructor(radius) {
+        this.radius = radius;
+    }
+
+    getArea() {
+        return this.#pi * this.radius ** 2;
+    }
+}
+
+const c = new Circle(20);
+console.log(c.getArea());
+```
+
+8. 
+```js
+for(let i in arr){
+    console.log(arr[i]);
+}
+
+for(let el of arr){
+    console.log(el);
+}
+```
+
+9. map 可以创建新数组， forEach 不能。
+```js
+let arr = [1,2,3];
+arr.forEach((num, i, array) => {
+    array[i] = num * 2;
+});
+
+console.log(arr);
+arr.map((num, i, array) => {
+    array[i] = num * 2;
+})
+console.log(arr);
+
+arr = arr.map(x => x + 2);
+console.log(arr);
+```
+
+10. 
+```js
+Array.prototype.myForEach = function(){
+
+}
+```
+
+11. 
+```js
+const arr = [3, 2, 1];
+
+Array.prototype.myForEach = function(callbackfn) {
+    for (let i = 0; i < this.length; i++) {
+        callbackfn(this[i], i, this);
+    }
+}
+
+arr.myForEach((num, i, array) => {
+    array[i] = num * 2;
+});
+
+console.log(arr);
+```
+
+12. 
+```js
+Array.prototype.myMap = function(callbackfn) {
+    const arr = [];
+    for (let i = 0; i < this.length; i++) {
+        arr.push(callbackfn(this[i], i, this));
+    }
+    return arr;
+}
+```
+
+13. 
+```js
+const arr = ['a', 'b', 'c'];
+console.log(arr.reduce((acc, cur, i, arr) => acc + cur + cur, 'dd')); 
+
+Array.prototype.myReduce= function(callback){
+
+}
+```
+
+14. 
+```js
+// oop: Object-oriented programming
+
+// // encapsulation
+// class Person {
+//     #name;
+//     #age;
+//     constructor(name, age) {
+//         this.#name = name;
+//         this.#age = age;
+//     }
+//     get name() {
+//         return this.#name;
+//     }
+//     set name(newName) {
+//         this.#name = newName;
+//     }
+//     walk() {
+//         console.log(this.#name + ' walk around the world! ' + this.#age);
+//         console.log(this.#name, 'walk around the world!', this.#age);
+//         console.log(`${this.#name} walk around the world! ${this.#age}`);
+//     }
+// }
+
+// function Person(name, age) {
+//     this.name = name;
+//     this.age = age;
+// }
+// Person.prototype.walk = function() {
+//     console.log(this.name + ' walk around the world! ' + this.age);
+// }
+
+// const p = new Person('Jojo', 18);
+// Person.prototype.__proto__.run = function() {
+//     console.log(this.name + ' is running');
+// }
+// console.log(p);
+// p.walk();
+// p.run();
+
+// console.log(Person.prototype === p.__proto__);
+
+// const p1 = new Person('Dio', 200);
+// console.log(p1);
+// p1.walk();
+// p1.run();
+// p.name = 'Dio';
+// console.log(p.name);
+// p.walk();
+
+// // // inheritance
+// class Employee extends Person {
+//     constructor(name, age, company) {
+//         super(name, age);
+//         this.company = company;
+//     }
+//     walk() {
+//         console.log(this.name + ' instance 1 from employee class ');
+//     }
+//     walk(salary) {
+//         console.log(this.name + ' instance 2 from employee class ' + 20000);
+//     }
+// }
+
+// function Employee(name, age, company) {
+//     const P = Person.bind(this);
+//     P(name, age); // call apply bind
+//     this.company = company;
+// }
+// Employee.prototype = Person.prototype;
+// Employee.prototype.constructor = Employee;
+
+// const e = new Employee('Dio', 200, 'Jump');
+// console.log(e);
+// e.walk();
+
+// // Poly-morph-ism : Many Forms
+// class Animal {
+//     constructor(name) {
+//         this.name = name;
+//     }
+//     move() {
+//         console.log('move');
+//     }
+// }
+// class Fash extends Animal {
+//     constructor(name) {
+//         super(name);
+//     }
+//     move() {
+//         return console.log(this.name + ' can swim');
+//     }
+// }
+// class Bird extends Animal {
+//     constructor(name) {
+//         super(name);
+//     }
+//     move() {
+//         return console.log(this.name + ' can fly');
+//     }
+// }
+// class Monkey extends Animal {
+//     constructor(name) {
+//         super(name);
+//     }
+//     move() {
+//         return console.log(this.name + ' can run');
+//     }
+// }
+// const fish = new Fash('fish');
+// const bird = new Bird('bird');
+// const monkey = new Monkey('monkey');
+// fish.move();
+// bird.move();
+// monkey.move();
+
+// // Abstraction
+// class Circle {
+//     #pi = 3.1415926; 
+//     constructor(radius) {
+//         this.radius = radius;
+//     }
+
+//     getArea() {
+//         return this.#pi * this.radius ** 2;
+//     }
+// }
+// const c = new Circle(20);
+// console.log(c.getArea());
+
+// // loop
+
+// for (let i = 0; i < arr.length; i++)
+// const arr = [3, 2, 1];
+
+// Array.prototype.myForEach = function(callbackfn) {
+//     // console.log('this: ', this);
+//     for (let i = 0; i < this.length; i++) {
+//         callbackfn(this[i], i, this);
+//     }
+// }
+
+// Array.prototype.myMap = function(callbackfn) {
+//     // console.log('this: ', this);
+//     const arr = [];
+//     for (let i = 0; i < this.length; i++) {
+//         arr.push(callbackfn(this[i], i, this));
+//     }
+//     return arr;
+// }
+
+// Array.prototype.myFilter = function(callbackfn) {
+//     // console.log('this: ', this);
+//     const arr = [];
+//     for (let i = 0; i < this.length; i++) {
+
+//         if (callbackfn(this[i], i, this)) {
+//             arr.push(this[i])
+//         }
+//     }
+//     return arr;
+// }
+
+// // mySome, myEvery, myReduce
+
+// const arr = ['a', 'b', 'c'];
+// console.log(arr.reduce((acc, cur, i, arr) => acc + cur + cur, 'dd')); // 'ddaabbcc'
+// // 'dd' + a + a = 'ddaa' + b + b = ddaabb + c + c 
+
+// for (let i in arr) {
+//     console.log(arr[i]);
+// }
+
+// console.log(arr.myFilter((num, i, array) => {
+//     return num > 1;
+// }));
+
+
+// const obj = {name: 'Jojo', age: 18};
+
+// for (let key in obj) {
+//     console.log(key, obj[key]);
+// }
+
+// // object copy
+
+// shallow copy & deep copy
+
+```
+
+15. 
+```js
+// date: new Date(),
+// fn: ()=>{},
+
+const obj2 = JSON.parse(JSON.stringfy(obj));
+```
+
+16. solution: Lodash
+
+```bash
+$ npm i lodash.clonedeep
+```
+
+17. 
+```js
+const _ = require('lodash');
+const obj3 = _.cloneDeep(obj);
+console.log(obj, obj3);
+```
