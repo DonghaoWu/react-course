@@ -619,3 +619,221 @@ const _ = require('lodash');
 const obj3 = _.cloneDeep(obj);
 console.log(obj, obj3);
 ```
+
+6/3:
+
+1. closure
+- It is kind of like some function private variables that you don’t want it to expose to other users.
+```js
+fucntion foo(){
+    console.log('hello');
+    var a = 5;
+    return funtion(){
+        console.log(a);
+    }
+}
+
+let a = foo();
+console.log(a);
+```
+
+2. async event
+```js
+console.log(1);
+setTimeout(()=>{
+    console.log(2);
+},1000);
+console.log(3);
+setTimeout(()=>{
+    console.log(4);
+},0);
+
+// block code and non-block code
+function foo(){
+    for(var i = 0; i < 5; i++){
+        setTimeout(()=>{
+            console.log(i);
+        }, i * 1000)
+    }
+}
+foo();
+```
+
+- Could you explain a little bit more about the difference when use let?
+
+```js
+function foo(){
+    console.log('foo');
+}
+function randomTimer(){
+    return Math.random()*1000;
+}
+function callFooWithTimer(){
+    setTimeout(roo, randomTimer()); //Composition
+}
+
+function call2(cb){
+    let timer = randomTimer();
+    console.log(timer);
+    setTimerout(cb, timer);
+}
+```
+
+2. callback hell/ api, higher order function
+```js
+function getUser(userID, cb) {
+  let data;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      data = JSON.parse(this.responseText);
+      cb(data);
+    }
+  };
+  xhttp.open(
+    "GET",
+    "https://jsonplaceholder.typicode.com/todos/" + userID,
+    true
+  );
+  xhttp.send();
+}
+getUser(1, (data1) => {
+  //More logic
+  logMsg(data1);
+  getUser(2, (data2) => {
+    logMsg(data2);
+    getUser(3, (data3) => {
+      logMsg(data3);
+    });
+  });
+});
+
+function logMsg(msg) {
+  console.warn(msg);
+}
+```
+
+3. destructure, declare variables
+```js
+let person = {
+    age:20,
+    name:dio
+}
+
+// array declaration
+const {age, name} = person;
+
+const arr = [{name:'dio'}, ()=>{}];
+
+const [person, movement] = arr;
+```
+
+4. arrow function
+```js
+function foo(){
+    console.log('Normal function:');
+    console.log(this);
+}
+
+let foo2 = ()=>{
+    console.log('Arrow function');
+    console.log(this);
+}
+
+foo();
+foo2();
+```
+
+5. binding, inpresive, expresive
+```js
+this.x = 9;
+const myObj = {
+    x:81,
+    getX:function(){
+        rturn this.x;
+    }
+};
+
+console.log(myObj.getX());
+const retriveX = myObj.getX;
+console.log(retriveX());
+```
+
+```js
+function foo(){
+    console.log('Normal function:');
+    console.log(this);
+}.bind(this);
+
+foo();
+
+let foo2 = ()=>{
+    console.log('Arrow function');
+    console.log(this);
+}
+
+foo2();
+```
+
+```js
+const obj ={
+    foo:function(){
+        console.log(this);
+    },
+    foo2:()=>{
+        console.log(this);
+    }
+}
+
+obj.foo();
+obj.foo2();
+
+const obj ={
+    foo:function(){
+        console.log(this);
+    }.bind(this),
+    foo2:()=>{
+        console.log(this);
+    }
+}
+
+obj.foo();
+obj.foo2();
+```
+
+- if you use function in obj,it is better to use function declaration not arrow function.
+
+6. IIFE
+```js
+(function foo(){
+    console.log('hello')
+})();
+
+const controller = (function(){
+    let a = 5;
+    return{
+        init:()=>{
+            console.log('init: ', a);
+        },
+    };
+})();
+
+controller.init();
+```
+
+7. Currying function
+```js
+function add(a){
+    return function(b){
+        return a + b;
+    };
+}
+
+console.log(add(1)(2));
+
+const add = (...a) =>(...b) =>(...c)=>{
+    return [...a, ...b, ...c].reduce((acc, cur) => acc + cur, 0);
+}
+```
+
+
