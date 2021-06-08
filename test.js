@@ -35,16 +35,42 @@
 // // console.log(retriveX);
 // console.log(retriveX());
 
-const foo = function () {
-    console.log('Normal function:');
-    console.log(this);
-}.bind(this);
+// const foo = function () {
+//     console.log('Normal function:');
+//     console.log(this);
+// }.bind(this);
 
-foo();
+// foo();
 
-let foo2 = () => {
-    console.log('Arrow function');
-    console.log(this);
+// let foo2 = () => {
+//     console.log('Arrow function');
+//     console.log(this);
+// }
+
+// foo2();
+
+class MyPromise {
+    constructor(cb) {
+        this.thenCbQueue = [];
+        this.resolve = function () {
+            console.log(this)
+            // const curThenCb = this.thenCbQueue.shift();
+            // curThenCb(data);
+        };
+        this.reject = function () {
+
+        };
+        cb(this.resolve, this.reject);
+    }
+
+    then(thenCb) {
+        this.thenCbQueue.push(thenCb);
+    }
 }
 
-foo2();
+const p = new MyPromise((res, rej) => {
+    res('Hello')
+})
+    .then(data => {
+        console.log(data);
+    })

@@ -836,4 +836,94 @@ const add = (...a) =>(...b) =>(...c)=>{
 }
 ```
 
+6/7:
 
+1. Promise
+```js
+const p = new Promise((resolve, reject)=>{
+    console.log('Hello');
+});
+
+const p = new Promise((resolve, reject) =>{
+    let timer = randomTimer();
+    setTimeout(()=>{
+        resolve('hello')
+    })
+    .then((data)=>{
+        logMsg(data);
+    })
+    .then((data)=>{
+        logMsg(data);
+    })
+})
+
+```
+
+- Promise 会运行 console.log，当它被定义的时候。
+
+```js
+function getUser(userID){
+    return new Promise((resolve, reject) =>{
+        let data;
+        let xttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                data = JSON.parse(this.responseText);
+                resolve(data);
+            }
+        };
+        xhttp.open(
+            "GET",
+            'api'+userID,
+            true
+        );
+        xhttp.send();
+    });
+}
+
+getUser(1)
+.then(data=>{
+    console.log(data);
+    return getUser(2);
+})
+.then(data=>{
+    console.og(data);
+});
+```
+
+- `意味着 getUser(1),然后结果是 return a promise，过程是运行 promise 的 parameter，也就是 callback function。`
+
+2. class & promise
+```js
+class MyPromise{
+    constructor(cb){
+        this.resolve = function(){
+            const curThenCb = this.thenCbQueue.shift();
+            curThenCb(data);
+        };
+        this.reject = function(){
+
+        };
+        this.thenCbQueue = [];
+        cb(this.resolve, this.reject);
+    }
+
+    then(thenCb){
+        this.thenCbQueue.push(thenCb);
+    }
+}
+
+const p = new MyPromise((res,rej)=>{
+    res('Hello')
+})
+.then(data=>{
+    console.log(data);
+})
+```
+
+- I would like the purpose of this demonstration about MyPromise, I don’t get the point.
+
+```js
+// 在运行以下的代码时，cb 是直接运行的。
+const p = new Promise(cb);
+```
