@@ -927,3 +927,321 @@ const p = new MyPromise((res,rej)=>{
 // 在运行以下的代码时，cb 是直接运行的。
 const p = new Promise(cb);
 ```
+
+6/9:
+
+1. promise 中的 catch 可以用来接住之前的 throw new Error，也可以用来接住 reject 中的信息，还可以接住 api 返回的 error。
+
+2. At the beginning, ‘this’ in personIntro represent global object, after bind method in line 101, ‘this’ in personIntro change to person object.
+
+3. bind/call/apply, simple explanation.
+
+```js
+//bind(), apply(), call()
+const person = {
+  firstName: "Ana",
+  lastName: "Xin",
+  getFullName: function () {
+    let fullName = this.firstName + " " + this.lastName;
+    return fullName;
+  },
+};
+
+let personIntro = function (hobby, food) {
+  console.log(
+    this.firstName +
+      " " +
+      this.lastName +
+      " " +
+      " loves " +
+      hobby +
+      " and " +
+      food
+  );
+};
+
+let myIntro = personIntro.bind(person);
+myIntro("video games", "sushi");
+
+personIntro.apply(person, ["painting", "fruits"]);
+
+personIntro.call(person, "painting", "fruits");
+```
+
+4. fetch is an async function that return an promise.
+
+```js
+const fetch = (url) =>{
+    return new promise((res, rej)=>{
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                const response = {
+                    json:function(){
+                        return new Promise((resolve, reject)=>{
+                            resolve(JSON.parse(xhttp.responseText))
+                        });
+                    };
+                    res(response);
+                }
+            }
+        }
+        xhttp.open('GET', url,true);
+        xhttp.send();
+    });
+}
+```
+
+5. promise.all, to control the sequence.
+
+```js
+const promise1 = fetch("https://jsonplaceholder.typicode.com/todos/1").then(
+  (response) => response.json()
+);
+const promise2 = fetch("https://jsonplaceholder.typicode.com/todos/2").then(
+  (response) => response.json()
+);
+const promise3 = fetch("https://jsonplaceholder.typicode.com/todos/3").then(
+  (response) => response.json()
+);
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+});
+```
+
+- Could you talk a little bit about which part is more important in the foundation session? Or which part we should focus on? BTW, I like your course.
+
+
+6/9:
+
+1. todo list
+- js css html
+- json placeholder
+- fetch
+```js
+
+```
+
+2. google font, copy the font link
+
+3. font-family:
+
+```css
+:root {
+    --height-header: 60px;
+    --height-todolist: 300px;
+    --height-todolist-header: 30px;
+
+    --width-todolist: 400px;
+
+    --color-green: rgb(30, 255, 0);
+    --color-red-button: rgb(148, 21, 21);
+    --color-red-li-hover: rgb(27, 172, 8)
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dancing Script', cursive;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.header {
+    position: fixed;
+    background: linear-gradient(to right, black, var(--color-green));
+    height: var(--height-header);
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+    text-transform: capitalize;
+    line-height: var(--height-header);
+    letter-spacing: 3px;
+    padding-left: 10px;
+    user-select: none;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100%;
+    width: 100%;
+    background-color: bisque;
+}
+.todolist {
+    height: var(--height-todolist);
+    width: var(--width-todolist);
+    background-color: var(--color-green);
+    box-shadow: 10px 10px 10px black;
+    border-radius: 10px;
+}
+
+.todolist__header,
+.todolist__input,
+ul li {
+    height: var(--height-todolist-header);
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    text-transform: capitalize;
+    line-height: var(--height-todolist-header);
+    letter-spacing: 3px;
+    padding-left: 10px;
+    user-select: none;
+    list-style: none;
+}
+
+.todolist__header {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.todolist__content {
+    height: calc(var(--height-todolist) - var(--height-todolist-header) * 2);
+    overflow: auto;
+}
+
+ul li span {
+    width: 100%;
+    overflow: hidden;
+}
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./index.css" />
+        <script async src="./index.js"></script>
+    </head>
+    <body>
+        <header class="header">welcome to antra</header>
+        <main class="content">
+            <section class="todolist">
+                <header class="todolist__header">todo list</header>
+                <input
+                    type="text"
+                    class="todolist__input"
+                    placeholder="input here"
+                />
+                <ul class="todolist__content">
+
+                    <li>task1</li>
+                    <li>task1</li>
+                    <li>task1</li>
+                </ul>
+            </section>
+        </main>
+    </body>
+</html>
+
+```
+
+- better to use `NodeList`
+
+- innerHTML
+- appenChild
+
+```js
+// Model View Controller
+
+const todoAPI = (() => {
+
+    const baseUrl = 'https://jsonplaceholder.typicode.com';
+    const todoPath = 'todos';
+
+    const getAllTodos = () =>
+        fetch([baseUrl, todoPath].join('/'))
+            .then((response) => response.json());
+
+    return {
+        getAllTodos
+    }
+})();
+
+const View = (() => {
+
+    const domString = {
+        todolist: 'todolist__content'
+    }
+    
+    const render = (element, htmlString) => {
+        element.innerHTML = htmlString;
+    }
+
+    const createTodoTmp = (todoArray) => {
+        let htmlString = '';
+        todoArray.forEach(ele => {
+            htmlString += `
+                <li>
+                    <span>
+                        ${ele.title}
+                    </span>
+                </li>
+            `;
+        });
+        return htmlString;
+    }
+
+    return {
+        domString,
+        render,
+        createTodoTmp
+    }
+})();
+
+const Model = ((api) => {
+    class Todo {
+        constructor(userId, id, title, completed) {
+            this.userId = userId;
+            this.id = id;
+            this.title = title;
+            this.completed = completed;
+        }
+    }
+
+    const getAllTodos = api.getAllTodos;
+
+    return {
+        getAllTodos,
+        Todo
+    }
+})(todoAPI);
+
+const AppController = ((model, view) => {
+
+    const todoElement = document.querySelector('.' + view.domString.todolist);
+
+    const init = () => {
+        model.getAllTodos().then( data => {
+            const todoTmp = view.createTodoTmp(data);
+            view.render(todoElement, todoTmp);
+        });
+    }
+
+    return {
+        init
+    }
+})(Model, View);
+
+AppController.init();
+```
