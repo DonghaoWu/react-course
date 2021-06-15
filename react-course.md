@@ -40,34 +40,37 @@
     - form
     - artical
 
-----------------------------------------------------------------------
+---
+
 ### 5/26:
 
-1. 
+1.
+
 ```css
 /*  width = border*2 + content + padding*2 */
 
-box-sizing: border-box; 
+box-sizing: border-box;
 
 /* width = content */
 
-box-sizing: content-box; 
+box-sizing: content-box;
 ```
 
 2. breakpoint 调试时要注意当时浏览器的显示比例。
 
 3. css reset
+
 ```css
-*{
-    margin:0;
-    padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
 ```
 
 4. css normalization
 
-5.  - inline css: hgihest priority
-    - id selector: highest priority
+5. - inline css: hgihest priority
+   - id selector: highest priority
 
 6. static(`default`)/ absolute(`look up until a non-static element parent`) / relative(`相对原始位置`) / sticky(`导航缩放时内容不会聚集`) / fixed(`导航缩放时内容会聚集`)
 
@@ -80,20 +83,20 @@ box-sizing: content-box;
 10. media query `调试时要注意当时浏览器的显示比例。`
 
 11. BEM naming
+
     - [http://getbem.com/](http://getbem.com/)
 
-12. 
+12.
 
+---
 
-----------------------------------------------------------------------
 ### 5/27:
 
-1. I would like to know more about BEM naming, like when to use ‘-’, ‘__’ and ‘—’
+1. I would like to know more about BEM naming, like when to use ‘-’, ‘\_\_’ and ‘—’
 
-2. 
-    - inline:
-    - inline-block:
-    - block:
+2. - inline:
+   - inline-block:
+   - block:
 
 3. css variables
 
@@ -104,38 +107,41 @@ box-sizing: content-box;
 6. pass by value / pass by refernce
 
 7. compare undefined and null.
+
 ```js
 
 ```
 
 8. Maybe TypeScript can fix the coercion.
 
-9. 
+9.
+
 ```js
 let obj1 = {};
 let obj2 = Object.create({});
 
-class MyObj{
-    constructor(name){
-        this.name = name;
-    }
+class MyObj {
+  constructor(name) {
+    this.name = name;
+  }
 }
 
 let obj3 = new MyObj('hello');
 ```
 
 10. prototype chain
+
 ```js
-let obj = {name:'Dio'};
+let obj = { name: 'Dio' };
 
-function foo(input){
-    //case 1
-    input = {name:'dojo'};// create a new location
+function foo(input) {
+  //case 1
+  input = { name: 'dojo' }; // create a new location
 
-    //case 2
-    input.name = 'dojo';// pass by reference
+  //case 2
+  input.name = 'dojo'; // pass by reference
 
-    console.log(input);
+  console.log(input);
 }
 foo(obj);
 console.log(obj);
@@ -143,47 +149,44 @@ console.log(obj);
 
 11. let / const / var
 
-12. 
+12.
+
 - var - function scopr
 - let - block scope
 - const - block scope
 
-13. 
+13.
+
 - let / const cannot be hoinsted?
 - temporal dead zone: unreachable variable, only can use if it has been declaration.
 
-14. 
+14.
+
 ```js
 // declaration, enable hoisting
-function hello(){
-
-}
+function hello() {}
 
 // expression, no hoisting
-const hello = function(){
-
-}
+const hello = function () {};
 // arrow, no hoisting
-const hello = ()=>{
-
-}
+const hello = () => {};
 ```
 
 15. class will not be hoisted.
 
 16. construcotr function.
+
 ```js
-function Person(name, age){
-    this.name = name;
-    this.age = age;
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
 }
 
 let p = new Person('hello', 10);
 console.log(p);
-
 ```
 
-----------------------------------------------------------------------
+---
 
 5/28
 
@@ -195,25 +198,26 @@ console.log(p);
 
 1. Constructor function / class
 
-2. 
-```js
-class Person{
-    #name;
-    #age;
+2.
 
-    constructor(name,age){
-        this.#name = name;
-        this.#age = age;
-    }
-    get name(){
-        return this.#name;
-    }
-    set name(newName){
-        this.#name = newName;
-    }
-    walk(){
-        console.log(this.#name, this.#age);
-    }
+```js
+class Person {
+  #name;
+  #age;
+
+  constructor(name, age) {
+    this.#name = name;
+    this.#age = age;
+  }
+  get name() {
+    return this.#name;
+  }
+  set name(newName) {
+    this.#name = newName;
+  }
+  walk() {
+    console.log(this.#name, this.#age);
+  }
 }
 ```
 
@@ -227,36 +231,36 @@ Person.prototype === p.__proto__;
 
 ```js
 class Person {
-    #name;
-    #age;
-    constructor(name, age) {
-        this.#name = name;
-        this.#age = age;
-    }
-    get name() {
-        return this.#name;
-    }
-    set name(newName) {
-        this.#name = newName;
-    }
-    walk() {
-        console.log(this.#name + ' walk around the world! ' + this.#age);
-        console.log(this.#name, 'walk around the world!', this.#age);
-        console.log(`${this.#name} walk around the world! ${this.#age}`);
-    }
+  #name;
+  #age;
+  constructor(name, age) {
+    this.#name = name;
+    this.#age = age;
+  }
+  get name() {
+    return this.#name;
+  }
+  set name(newName) {
+    this.#name = newName;
+  }
+  walk() {
+    console.log(this.#name + ' walk around the world! ' + this.#age);
+    console.log(this.#name, 'walk around the world!', this.#age);
+    console.log(`${this.#name} walk around the world! ${this.#age}`);
+  }
 }
 
 class Employee extends Person {
-    constructor(name, age, company) {
-        super(name, age);
-        this.company = company;
-    }
-    walk() {
-        console.log(name + ' instance 1 from employee class ');
-    }
-    walk(salary) {
-        console.log(this.#name + ' instance 2 from employee class ' + salary);
-    }
+  constructor(name, age, company) {
+    super(name, age);
+    this.company = company;
+  }
+  walk() {
+    console.log(name + ' instance 1 from employee class ');
+  }
+  walk(salary) {
+    console.log(this.#name + ' instance 2 from employee class ' + salary);
+  }
 }
 
 const e = new Employee('Dio', 200, 'Jump');
@@ -264,9 +268,9 @@ console.log(e);
 e.walk();
 
 function Employee(name, age, company) {
-    const P = Person.bind(this);
-    P(name, age); // call apply bind
-    this.company = company;
+  const P = Person.bind(this);
+  P(name, age); // call apply bind
+  this.company = company;
 }
 Employee.prototype = Person.prototype;
 Employee.prototype.constructor = Employee;
@@ -278,36 +282,36 @@ Employee.prototype.constructor = Employee;
 
 ```js
 class Animal {
-    constructor(name) {
-        this.name = name;
-    }
-    move() {
-        console.log('move');
-    }
+  constructor(name) {
+    this.name = name;
+  }
+  move() {
+    console.log('move');
+  }
 }
 class Fash extends Animal {
-    constructor(name) {
-        super(name);
-    }
-    move() {
-        return console.log(this.name + ' can swim');
-    }
+  constructor(name) {
+    super(name);
+  }
+  move() {
+    return console.log(this.name + ' can swim');
+  }
 }
 class Bird extends Animal {
-    constructor(name) {
-        super(name);
-    }
-    move() {
-        return console.log(this.name + ' can fly');
-    }
+  constructor(name) {
+    super(name);
+  }
+  move() {
+    return console.log(this.name + ' can fly');
+  }
 }
 class Monkey extends Animal {
-    constructor(name) {
-        super(name);
-    }
-    move() {
-        return console.log(this.name + ' can run');
-    }
+  constructor(name) {
+    super(name);
+  }
+  move() {
+    return console.log(this.name + ' can run');
+  }
 }
 
 const fish = new Fash('fish');
@@ -319,96 +323,100 @@ monkey.move();
 ```
 
 7. abstraction
+
 ```js
 class Circle {
-    #pi = 3.1415926; 
-    constructor(radius) {
-        this.radius = radius;
-    }
+  #pi = 3.1415926;
+  constructor(radius) {
+    this.radius = radius;
+  }
 
-    getArea() {
-        return this.#pi * this.radius ** 2;
-    }
+  getArea() {
+    return this.#pi * this.radius ** 2;
+  }
 }
 
 const c = new Circle(20);
 console.log(c.getArea());
 ```
 
-8. 
+8.
+
 ```js
-for(let i in arr){
-    console.log(arr[i]);
+for (let i in arr) {
+  console.log(arr[i]);
 }
 
-for(let el of arr){
-    console.log(el);
+for (let el of arr) {
+  console.log(el);
 }
 ```
 
 9. map 可以创建新数组， forEach 不能。
+
 ```js
-let arr = [1,2,3];
+let arr = [1, 2, 3];
 arr.forEach((num, i, array) => {
-    array[i] = num * 2;
+  array[i] = num * 2;
 });
 
 console.log(arr);
 arr.map((num, i, array) => {
-    array[i] = num * 2;
-})
+  array[i] = num * 2;
+});
 console.log(arr);
 
-arr = arr.map(x => x + 2);
+arr = arr.map((x) => x + 2);
 console.log(arr);
 ```
 
-10. 
+10.
+
 ```js
-Array.prototype.myForEach = function(){
-
-}
+Array.prototype.myForEach = function () {};
 ```
 
-11. 
+11.
+
 ```js
 const arr = [3, 2, 1];
 
-Array.prototype.myForEach = function(callbackfn) {
-    for (let i = 0; i < this.length; i++) {
-        callbackfn(this[i], i, this);
-    }
-}
+Array.prototype.myForEach = function (callbackfn) {
+  for (let i = 0; i < this.length; i++) {
+    callbackfn(this[i], i, this);
+  }
+};
 
 arr.myForEach((num, i, array) => {
-    array[i] = num * 2;
+  array[i] = num * 2;
 });
 
 console.log(arr);
 ```
 
-12. 
+12.
+
 ```js
-Array.prototype.myMap = function(callbackfn) {
-    const arr = [];
-    for (let i = 0; i < this.length; i++) {
-        arr.push(callbackfn(this[i], i, this));
-    }
-    return arr;
-}
+Array.prototype.myMap = function (callbackfn) {
+  const arr = [];
+  for (let i = 0; i < this.length; i++) {
+    arr.push(callbackfn(this[i], i, this));
+  }
+  return arr;
+};
 ```
 
-13. 
+13.
+
 ```js
 const arr = ['a', 'b', 'c'];
-console.log(arr.reduce((acc, cur, i, arr) => acc + cur + cur, 'dd')); 
+console.log(arr.reduce((acc, cur, i, arr) => acc + cur + cur, 'dd'));
 
-Array.prototype.myReduce= function(callback){
-
-}
+Array.prototype.myReduce = function (callback) {};
 ```
 
-14. 
+14.
+
 ```js
 // oop: Object-oriented programming
 
@@ -527,7 +535,7 @@ Array.prototype.myReduce= function(callback){
 
 // // Abstraction
 // class Circle {
-//     #pi = 3.1415926; 
+//     #pi = 3.1415926;
 //     constructor(radius) {
 //         this.radius = radius;
 //     }
@@ -576,7 +584,7 @@ Array.prototype.myReduce= function(callback){
 
 // const arr = ['a', 'b', 'c'];
 // console.log(arr.reduce((acc, cur, i, arr) => acc + cur + cur, 'dd')); // 'ddaabbcc'
-// // 'dd' + a + a = 'ddaa' + b + b = ddaabb + c + c 
+// // 'dd' + a + a = 'ddaa' + b + b = ddaabb + c + c
 
 // for (let i in arr) {
 //     console.log(arr[i]);
@@ -585,7 +593,6 @@ Array.prototype.myReduce= function(callback){
 // console.log(arr.myFilter((num, i, array) => {
 //     return num > 1;
 // }));
-
 
 // const obj = {name: 'Jojo', age: 18};
 
@@ -596,10 +603,10 @@ Array.prototype.myReduce= function(callback){
 // // object copy
 
 // shallow copy & deep copy
-
 ```
 
-15. 
+15.
+
 ```js
 // date: new Date(),
 // fn: ()=>{},
@@ -613,7 +620,8 @@ const obj2 = JSON.parse(JSON.stringfy(obj));
 $ npm i lodash.clonedeep
 ```
 
-17. 
+17.
+
 ```js
 const _ = require('lodash');
 const obj3 = _.cloneDeep(obj);
@@ -623,7 +631,9 @@ console.log(obj, obj3);
 6/3:
 
 1. closure
+
 - It is kind of like some function private variables that you don’t want it to expose to other users.
+
 ```js
 fucntion foo(){
     console.log('hello');
@@ -638,23 +648,24 @@ console.log(a);
 ```
 
 2. async event
+
 ```js
 console.log(1);
-setTimeout(()=>{
-    console.log(2);
-},1000);
+setTimeout(() => {
+  console.log(2);
+}, 1000);
 console.log(3);
-setTimeout(()=>{
-    console.log(4);
-},0);
+setTimeout(() => {
+  console.log(4);
+}, 0);
 
 // block code and non-block code
-function foo(){
-    for(var i = 0; i < 5; i++){
-        setTimeout(()=>{
-            console.log(i);
-        }, i * 1000)
-    }
+function foo() {
+  for (var i = 0; i < 5; i++) {
+    setTimeout(() => {
+      console.log(i);
+    }, i * 1000);
+  }
 }
 foo();
 ```
@@ -662,24 +673,25 @@ foo();
 - Could you explain a little bit more about the difference when use let?
 
 ```js
-function foo(){
-    console.log('foo');
+function foo() {
+  console.log('foo');
 }
-function randomTimer(){
-    return Math.random()*1000;
+function randomTimer() {
+  return Math.random() * 1000;
 }
-function callFooWithTimer(){
-    setTimeout(roo, randomTimer()); //Composition
+function callFooWithTimer() {
+  setTimeout(roo, randomTimer()); //Composition
 }
 
-function call2(cb){
-    let timer = randomTimer();
-    console.log(timer);
-    setTimerout(cb, timer);
+function call2(cb) {
+  let timer = randomTimer();
+  console.log(timer);
+  setTimerout(cb, timer);
 }
 ```
 
 2. callback hell/ api, higher order function
+
 ```js
 function getUser(userID, cb) {
   let data;
@@ -691,8 +703,8 @@ function getUser(userID, cb) {
     }
   };
   xhttp.open(
-    "GET",
-    "https://jsonplaceholder.typicode.com/todos/" + userID,
+    'GET',
+    'https://jsonplaceholder.typicode.com/todos/' + userID,
     true
   );
   xhttp.send();
@@ -714,37 +726,40 @@ function logMsg(msg) {
 ```
 
 3. destructure, declare variables
+
 ```js
 let person = {
-    age:20,
-    name:dio
-}
+  age: 20,
+  name: dio,
+};
 
 // array declaration
-const {age, name} = person;
+const { age, name } = person;
 
-const arr = [{name:'dio'}, ()=>{}];
+const arr = [{ name: 'dio' }, () => {}];
 
 const [person, movement] = arr;
 ```
 
 4. arrow function
+
 ```js
-function foo(){
-    console.log('Normal function:');
-    console.log(this);
+function foo() {
+  console.log('Normal function:');
+  console.log(this);
 }
 
-let foo2 = ()=>{
-    console.log('Arrow function');
-    console.log(this);
-}
+let foo2 = () => {
+  console.log('Arrow function');
+  console.log(this);
+};
 
 foo();
 foo2();
 ```
 
 5. binding, inpresive, expresive
+
 ```js
 this.x = 9;
 const myObj = {
@@ -776,26 +791,26 @@ foo2();
 ```
 
 ```js
-const obj ={
-    foo:function(){
-        console.log(this);
-    },
-    foo2:()=>{
-        console.log(this);
-    }
-}
+const obj = {
+  foo: function () {
+    console.log(this);
+  },
+  foo2: () => {
+    console.log(this);
+  },
+};
 
 obj.foo();
 obj.foo2();
 
-const obj ={
-    foo:function(){
-        console.log(this);
-    }.bind(this),
-    foo2:()=>{
-        console.log(this);
-    }
-}
+const obj = {
+  foo: function () {
+    console.log(this);
+  }.bind(this),
+  foo2: () => {
+    console.log(this);
+  },
+};
 
 obj.foo();
 obj.foo2();
@@ -804,121 +819,120 @@ obj.foo2();
 - if you use function in obj,it is better to use function declaration not arrow function.
 
 6. IIFE
+
 ```js
-(function foo(){
-    console.log('hello')
+(function foo() {
+  console.log('hello');
 })();
 
-const controller = (function(){
-    let a = 5;
-    return{
-        init:()=>{
-            console.log('init: ', a);
-        },
-    };
+const controller = (function () {
+  let a = 5;
+  return {
+    init: () => {
+      console.log('init: ', a);
+    },
+  };
 })();
 
 controller.init();
 ```
 
 7. Currying function
+
 ```js
-function add(a){
-    return function(b){
-        return a + b;
-    };
+function add(a) {
+  return function (b) {
+    return a + b;
+  };
 }
 
 console.log(add(1)(2));
 
-const add = (...a) =>(...b) =>(...c)=>{
+const add =
+  (...a) =>
+  (...b) =>
+  (...c) => {
     return [...a, ...b, ...c].reduce((acc, cur) => acc + cur, 0);
-}
+  };
 ```
 
 6/7:
 
 1. Promise
+
 ```js
-const p = new Promise((resolve, reject)=>{
-    console.log('Hello');
+const p = new Promise((resolve, reject) => {
+  console.log('Hello');
 });
 
-const p = new Promise((resolve, reject) =>{
-    let timer = randomTimer();
-    setTimeout(()=>{
-        resolve('hello')
+const p = new Promise((resolve, reject) => {
+  let timer = randomTimer();
+  setTimeout(() => {
+    resolve('hello');
+  })
+    .then((data) => {
+      logMsg(data);
     })
-    .then((data)=>{
-        logMsg(data);
-    })
-    .then((data)=>{
-        logMsg(data);
-    })
-})
-
+    .then((data) => {
+      logMsg(data);
+    });
+});
 ```
 
 - Promise 会运行 console.log，当它被定义的时候。
 
 ```js
-function getUser(userID){
-    return new Promise((resolve, reject) =>{
-        let data;
-        let xttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                data = JSON.parse(this.responseText);
-                resolve(data);
-            }
-        };
-        xhttp.open(
-            "GET",
-            'api'+userID,
-            true
-        );
-        xhttp.send();
-    });
+function getUser(userID) {
+  return new Promise((resolve, reject) => {
+    let data;
+    let xttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        data = JSON.parse(this.responseText);
+        resolve(data);
+      }
+    };
+    xhttp.open('GET', 'api' + userID, true);
+    xhttp.send();
+  });
 }
 
 getUser(1)
-.then(data=>{
+  .then((data) => {
     console.log(data);
     return getUser(2);
-})
-.then(data=>{
+  })
+  .then((data) => {
     console.og(data);
-});
+  });
 ```
 
 - `意味着 getUser(1),然后结果是 return a promise，过程是运行 promise 的 parameter，也就是 callback function。`
 
 2. class & promise
+
 ```js
-class MyPromise{
-    constructor(cb){
-        this.resolve = function(){
-            const curThenCb = this.thenCbQueue.shift();
-            curThenCb(data);
-        };
-        this.reject = function(){
+class MyPromise {
+  constructor(cb) {
+    this.resolve = function () {
+      const curThenCb = this.thenCbQueue.shift();
+      curThenCb(data);
+    };
+    this.reject = function () {};
+    this.thenCbQueue = [];
+    cb(this.resolve, this.reject);
+  }
 
-        };
-        this.thenCbQueue = [];
-        cb(this.resolve, this.reject);
-    }
-
-    then(thenCb){
-        this.thenCbQueue.push(thenCb);
-    }
+  then(thenCb) {
+    this.thenCbQueue.push(thenCb);
+  }
 }
 
-const p = new MyPromise((res,rej)=>{
-    res('Hello')
-})
-.then(data=>{
-    console.log(data);
-})
+const p = new MyPromise((res, rej) => {
+  res('Hello');
+}).then((data) => {
+  console.log(data);
+});
 ```
 
 - I would like the purpose of this demonstration about MyPromise, I don’t get the point.
@@ -939,10 +953,10 @@ const p = new Promise(cb);
 ```js
 //bind(), apply(), call()
 const person = {
-  firstName: "Ana",
-  lastName: "Xin",
+  firstName: 'Ana',
+  lastName: 'Xin',
   getFullName: function () {
-    let fullName = this.firstName + " " + this.lastName;
+    let fullName = this.firstName + ' ' + this.lastName;
     return fullName;
   },
 };
@@ -950,22 +964,22 @@ const person = {
 let personIntro = function (hobby, food) {
   console.log(
     this.firstName +
-      " " +
+      ' ' +
       this.lastName +
-      " " +
-      " loves " +
+      ' ' +
+      ' loves ' +
       hobby +
-      " and " +
+      ' and ' +
       food
   );
 };
 
 let myIntro = personIntro.bind(person);
-myIntro("video games", "sushi");
+myIntro('video games', 'sushi');
 
-personIntro.apply(person, ["painting", "fruits"]);
+personIntro.apply(person, ['painting', 'fruits']);
 
-personIntro.call(person, "painting", "fruits");
+personIntro.call(person, 'painting', 'fruits');
 ```
 
 4. fetch is an async function that return an promise.
@@ -995,13 +1009,13 @@ const fetch = (url) =>{
 5. promise.all, to control the sequence.
 
 ```js
-const promise1 = fetch("https://jsonplaceholder.typicode.com/todos/1").then(
+const promise1 = fetch('https://jsonplaceholder.typicode.com/todos/1').then(
   (response) => response.json()
 );
-const promise2 = fetch("https://jsonplaceholder.typicode.com/todos/2").then(
+const promise2 = fetch('https://jsonplaceholder.typicode.com/todos/2').then(
   (response) => response.json()
 );
-const promise3 = fetch("https://jsonplaceholder.typicode.com/todos/3").then(
+const promise3 = fetch('https://jsonplaceholder.typicode.com/todos/3').then(
   (response) => response.json()
 );
 
@@ -1012,13 +1026,14 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 
 - Could you talk a little bit about which part is more important in the foundation session? Or which part we should focus on? BTW, I like your course.
 
-
 6/9:
 
 1. todo list
+
 - js css html
 - json placeholder
 - fetch
+
 ```js
 
 ```
@@ -1029,131 +1044,125 @@ Promise.all([promise1, promise2, promise3]).then((values) => {
 
 ```css
 :root {
-    --height-header: 60px;
-    --height-todolist: 300px;
-    --height-todolist-header: 30px;
+  --height-header: 60px;
+  --height-todolist: 300px;
+  --height-todolist-header: 30px;
 
-    --width-todolist: 400px;
+  --width-todolist: 400px;
 
-    --color-green: rgb(30, 255, 0);
-    --color-red-button: rgb(148, 21, 21);
-    --color-red-li-hover: rgb(27, 172, 8)
+  --color-green: rgb(30, 255, 0);
+  --color-red-button: rgb(148, 21, 21);
+  --color-red-li-hover: rgb(27, 172, 8);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Dancing Script', cursive;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Dancing Script', cursive;
 }
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .header {
-    position: fixed;
-    background: linear-gradient(to right, black, var(--color-green));
-    height: var(--height-header);
-    width: 100%;
-    color: white;
-    font-size: 2rem;
-    text-transform: capitalize;
-    line-height: var(--height-header);
-    letter-spacing: 3px;
-    padding-left: 10px;
-    user-select: none;
+  position: fixed;
+  background: linear-gradient(to right, black, var(--color-green));
+  height: var(--height-header);
+  width: 100%;
+  color: white;
+  font-size: 2rem;
+  text-transform: capitalize;
+  line-height: var(--height-header);
+  letter-spacing: 3px;
+  padding-left: 10px;
+  user-select: none;
 }
 
 .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    height: 100%;
-    width: 100%;
-    background-color: bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+  background-color: bisque;
 }
 .todolist {
-    height: var(--height-todolist);
-    width: var(--width-todolist);
-    background-color: var(--color-green);
-    box-shadow: 10px 10px 10px black;
-    border-radius: 10px;
+  height: var(--height-todolist);
+  width: var(--width-todolist);
+  background-color: var(--color-green);
+  box-shadow: 10px 10px 10px black;
+  border-radius: 10px;
 }
 
 .todolist__header,
 .todolist__input,
 ul li {
-    height: var(--height-todolist-header);
-    width: 100%;
-    outline: none;
-    border: none;
-    font-size: 1rem;
-    text-transform: capitalize;
-    line-height: var(--height-todolist-header);
-    letter-spacing: 3px;
-    padding-left: 10px;
-    user-select: none;
-    list-style: none;
+  height: var(--height-todolist-header);
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  text-transform: capitalize;
+  line-height: var(--height-todolist-header);
+  letter-spacing: 3px;
+  padding-left: 10px;
+  user-select: none;
+  list-style: none;
 }
 
 .todolist__header {
-    font-size: 1.5rem;
-    text-align: center;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .todolist__content {
-    height: calc(var(--height-todolist) - var(--height-todolist-header) * 2);
-    overflow: auto;
+  height: calc(var(--height-todolist) - var(--height-todolist-header) * 2);
+  overflow: auto;
 }
 
 ul li span {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 ```
 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="./index.css" />
-        <script async src="./index.js"></script>
-    </head>
-    <body>
-        <header class="header">welcome to antra</header>
-        <main class="content">
-            <section class="todolist">
-                <header class="todolist__header">todo list</header>
-                <input
-                    type="text"
-                    class="todolist__input"
-                    placeholder="input here"
-                />
-                <ul class="todolist__content">
-
-                    <li>task1</li>
-                    <li>task1</li>
-                    <li>task1</li>
-                </ul>
-            </section>
-        </main>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <script async src="./index.js"></script>
+  </head>
+  <body>
+    <header class="header">welcome to antra</header>
+    <main class="content">
+      <section class="todolist">
+        <header class="todolist__header">todo list</header>
+        <input type="text" class="todolist__input" placeholder="input here" />
+        <ul class="todolist__content">
+          <li>task1</li>
+          <li>task1</li>
+          <li>task1</li>
+        </ul>
+      </section>
+    </main>
+  </body>
 </html>
-
 ```
 
 - better to use `NodeList`
@@ -1165,83 +1174,125 @@ ul li span {
 // Model View Controller
 
 const todoAPI = (() => {
+  const baseUrl = 'https://jsonplaceholder.typicode.com';
+  const todoPath = 'todos';
 
-    const baseUrl = 'https://jsonplaceholder.typicode.com';
-    const todoPath = 'todos';
+  const getAllTodos = () =>
+    fetch([baseUrl, todoPath].join('/')).then((response) => response.json());
 
-    const getAllTodos = () =>
-        fetch([baseUrl, todoPath].join('/'))
-            .then((response) => response.json());
-
-    return {
-        getAllTodos
-    }
+  return {
+    getAllTodos,
+  };
 })();
 
 const View = (() => {
+  const domString = {
+    todolist: 'todolist__content',
+  };
 
-    const domString = {
-        todolist: 'todolist__content'
-    }
-    
-    const render = (element, htmlString) => {
-        element.innerHTML = htmlString;
-    }
+  const render = (element, htmlString) => {
+    element.innerHTML = htmlString;
+  };
 
-    const createTodoTmp = (todoArray) => {
-        let htmlString = '';
-        todoArray.forEach(ele => {
-            htmlString += `
+  const createTodoTmp = (todoArray) => {
+    let htmlString = '';
+    todoArray.forEach((ele) => {
+      htmlString += `
                 <li>
                     <span>
                         ${ele.title}
                     </span>
                 </li>
             `;
-        });
-        return htmlString;
-    }
+    });
+    return htmlString;
+  };
 
-    return {
-        domString,
-        render,
-        createTodoTmp
-    }
+  return {
+    domString,
+    render,
+    createTodoTmp,
+  };
 })();
 
 const Model = ((api) => {
-    class Todo {
-        constructor(userId, id, title, completed) {
-            this.userId = userId;
-            this.id = id;
-            this.title = title;
-            this.completed = completed;
-        }
+  class Todo {
+    constructor(userId, id, title, completed) {
+      this.userId = userId;
+      this.id = id;
+      this.title = title;
+      this.completed = completed;
     }
+  }
 
-    const getAllTodos = api.getAllTodos;
+  const getAllTodos = api.getAllTodos;
 
-    return {
-        getAllTodos,
-        Todo
-    }
+  return {
+    getAllTodos,
+    Todo,
+  };
 })(todoAPI);
 
 const AppController = ((model, view) => {
+  const todoElement = document.querySelector('.' + view.domString.todolist);
 
-    const todoElement = document.querySelector('.' + view.domString.todolist);
+  const init = () => {
+    model.getAllTodos().then((data) => {
+      const todoTmp = view.createTodoTmp(data);
+      view.render(todoElement, todoTmp);
+    });
+  };
 
-    const init = () => {
-        model.getAllTodos().then( data => {
-            const todoTmp = view.createTodoTmp(data);
-            view.render(todoElement, todoTmp);
-        });
-    }
-
-    return {
-        init
-    }
+  return {
+    init,
+  };
 })(Model, View);
 
 AppController.init();
 ```
+
+6/10:
+
+1.
+
+6/14:
+
+1. JQuery
+
+2. exam:
+
+- JQuery 
+- reading documentations
+- 
+```bash
+$ npm i jquery
+```
+
+- CDN, content delivery network
+- CDN is also a server.
+- reduce local source latency.
+- reduce static file size
+
+- Jquery script is in the head part of html.
+
+- $ in JQuery is a function.
+
+```js
+const a = fucntion(){};
+const b = function(){};
+
+console.log(a === b);
+```
+
+- cannot define same name in the same scope twice.
+- this keyword in class refers to the instance of the class.
+
+2. JQuery eventListener
+
+```js
+
+```
+
+3. show()/hide()/on()/ajax()
+
+4. ajax call, jsonplace holder
