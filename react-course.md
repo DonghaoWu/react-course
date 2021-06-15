@@ -1261,9 +1261,10 @@ AppController.init();
 
 2. exam:
 
-- JQuery 
+- JQuery
 - reading documentations
-- 
+-
+
 ```bash
 $ npm i jquery
 ```
@@ -1287,12 +1288,65 @@ console.log(a === b);
 - cannot define same name in the same scope twice.
 - this keyword in class refers to the instance of the class.
 
-2. JQuery eventListener
+- it is better to use class method than object function.
+
+2. MyJQuery -- 6/14, show()/hide()/on()/ajax()
 
 ```js
+class MyQuery {
+  constructor(selector) {
+    const el = document.querySelector(selector);
+    this.el = el;
+  }
 
+  html(content) {
+    this.el.innerHTML = content;
+  }
+
+  hide() {
+    this.el.style.display = 'none';
+  }
+
+  show() {
+    this.el.style.display = 'block';
+  }
+
+  on(event, cb) {
+    this.el.addEventListener(event, cb);
+  }
+}
+
+const $$ = function (selector) {
+  return new MyQuery(selector);
+};
+
+$$.ajax = function ({ url, success }) {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      success(data);
+    });
+};
+
+// innerHTML method
+$$('button.test').html('Next step');
+
+//-------- event listener
+let hiddenBox = $$('#banner-message');
+hiddenBox.hide();
+
+$$('#button-container button').on('click', function (event) {
+  hiddenBox.show();
+});
+
+// ajax
+$$.ajax({
+  url: 'https://jsonplaceholder.typicode.com/todos/1',
+  success: function (result) {
+    console.log(result);
+  },
+});
 ```
 
-3. show()/hide()/on()/ajax()
-
-4. ajax call, jsonplace holder
+3. index.html
+   - ./Jquery/index.html
