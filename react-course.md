@@ -1350,3 +1350,38 @@ $$.ajax({
 
 3. index.html
    - ./Jquery/index.html
+
+6/16:
+
+1. fullstack application
+
+2. mean stack, authetication.
+
+3. todolist
+
+4.
+
+```js
+this.el.style.visibility = 'hidden';
+this.el.style.display = 'none';
+```
+
+5. for loop / forEach, forEach cannot be broke.
+
+6.
+
+```js
+console.log([1, 2, 3].map === Array.prototype.map);
+```
+
+---
+
+### React
+
+1. react cdn
+
+2. react is an object, react.Component is a class.
+
+3. what is jsx used for?
+
+4. 

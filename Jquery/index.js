@@ -25,6 +25,7 @@ class MyQuery {
   constructor(selector) {
     const el = document.querySelector(selector);
     this.el = el;
+    this.originalDisplay = this.element.style.display;
   }
 
   html(content) {
