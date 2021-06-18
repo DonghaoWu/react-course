@@ -1385,3 +1385,58 @@ console.log([1, 2, 3].map === Array.prototype.map);
 3. what is jsx used for?
 
 4. 
+
+6/17:
+
+1. dns => https request => html/json => parse html =>build the dom => build cssom => 
+
+2. 通过 script 改变的 style 一般是提高了 priority。
+
+3. !important > inline(or script) > internal > external
+
+4. from jsx to js to create an element.
+
+5. babel is for converting jsx to js.
+
+```jsx
+render(){
+    return <Hello name='ty'>
+};
+
+render(){
+    return React.createElement(Hello, {name:'ty'})
+}
+```
+
+```js
+import React from 'react';
+
+function App() {
+  return <h1>Hello World</h1>;
+}
+
+// -----
+import React from 'react';
+
+function App() {
+  return React.createElement('h1', null, 'Hello world');
+}
+```
+
+6. 
+```bash
+$ npm i -g npm
+$ npm init -y #default setting
+$ npm i react reactdom
+$ touch .gitignore
+```
+
+7. react is also need other libraries.
+
+8. ^17.0.2 指只在17号大版本内。
+
+9. 一般而言，npm i 时会先查看 package.lock.json
+
+10. what if the version in these two files not match? So the npm will check the package-lock file first, then package.json? 
+
+11. show taylor in the browser
