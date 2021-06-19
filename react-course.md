@@ -1384,11 +1384,11 @@ console.log([1, 2, 3].map === Array.prototype.map);
 
 3. what is jsx used for?
 
-4. 
+4.
 
 6/17:
 
-1. dns => https request => html/json => parse html =>build the dom => build cssom => 
+1. dns => https request => html/json => parse html =>build the dom => build cssom =>
 
 2. 通过 script 改变的 style 一般是提高了 priority。
 
@@ -1423,7 +1423,8 @@ function App() {
 }
 ```
 
-6. 
+6.
+
 ```bash
 $ npm i -g npm
 $ npm init -y #default setting
@@ -1433,10 +1434,69 @@ $ touch .gitignore
 
 7. react is also need other libraries.
 
-8. ^17.0.2 指只在17号大版本内。
+8. ^17.0.2 指只在 17 号大版本内。
 
 9. 一般而言，npm i 时会先查看 package.lock.json
 
-10. what if the version in these two files not match? So the npm will check the package-lock file first, then package.json? 
+10. what if the version in these two files not match? So the npm will check the package-lock file first, then package.json?
 
 11. show taylor in the browser
+
+---
+
+6/18:
+
+1. check package-lock.json, not package.json
+
+2. why we need bundle?
+
+3. differences
+
+```diff
++ js language
++ ecmaScript a syntax standard
++ nodeJs
+```
+
+4. what is path.
+
+```js
+const path = require('path');
+console.log(path);
+```
+
+- path is from nodeJS, the code won't work in other environment(like browser).
+
+5. path.resolve(), resolve is like join.
+
+6. absolute path vs relative path.
+
+7. \_\_dirname means `an variabel that tells you the absolute path of the directory containing the currently executing file.`
+
+8. node-power workflow, react
+
+9. 在展示里面，使用 webpack build 命令生成 bundle.js 文件，然后在 html 中直接引用 bundle.js
+
+10. 今天的 demo 是一个新的更原始的展示，可以开一个 project：react-03。
+
+11. 开始加入 babel
+
+12. install babel
+
+```bash
+$ npm i --save-dev @babel/preset-react
+```
+
+13. webpack 的 build 命令会生成 dist 文件夹，babel 的 build 命令会生成 lib 文件夹。然后通过修改 webpack.config.js 文件的 entry 为 './lib/index.js'.
+
+14. webpack loader, 实现的是 `babel-loader`，install babel-loader
+
+15. 把 entry 改回 ‘。/src/index.js’, no babelrc `(6/18/2021, 好像仍然需要)`
+
+16. css loader(style loader)
+
+17. auto fix script path `plugin`
+
+- webpackhtmlplugin
+
+18. plugin is after bundling, and loader is before bunding.
