@@ -1500,3 +1500,11 @@ $ npm i --save-dev @babel/preset-react
 - webpackhtmlplugin
 
 18. plugin is after bundling, and loader is before bunding.
+
+19. [webpack documentation](https://webpack.js.org/guides/installation/#prerequisites)
+
+---
+
+6/21:
+
+1. 
