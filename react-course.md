@@ -1507,4 +1507,111 @@ $ npm i --save-dev @babel/preset-react
 
 6/21:
 
-1. 
+1. I learn something about TypeScript, do you have some advice?
+
+2. boilerplate
+
+3. CRA
+
+```bash
+$ npx create-react-app cra-demo
+```
+
+4. cra is a project.
+
+5. npx runner is a template package, download into local then run, delete evently.
+
+6. bin - command line interface
+
+```js
+"bin":{
+  "create-react-app":"./index.js"
+}
+```
+
+7. With plugin, the index.html in the public folder acts as a plugin template.
+
+8. cra is using jest to test. `jest-dom`
+
+9. package-lock can search jest.
+
+10. `react-script start`:
+
+11. react-script is a command line application.
+
+12. `eject` command:
+
+13. repotWebVitals
+
+14. 有名字但没有值的变量，它的值是 `undefined`.
+
+15. vitural dom cannot compare with the real dom. it is not a copy.
+
+16. we will have two virtual dom during the work.
+
+17. find the best way to update the real dom.
+
+18. In react, there are two virtual dom, after comparing the difference between them, react will find a best way to update the real dom.
+
+19. delcraletive programming: you only care about the result.
+
+20. impairitive,
+
+```js
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+```
+
+21. document.querySelector('h1'),如果没有对象，就会返回 null。
+
+22. 不需要 constructor。
+
+```jsx
+const list = ['a', 'b', 'c'];
+
+class App extends Component {
+  state = {
+    toggle: true,
+  };
+
+  onToggleList = () => {
+    this.setState((prevState) => ({
+      toggle: !prevState.toggle,
+    }));
+  };
+
+  render() {
+    return (
+      <div>
+        <Toggle toggle={this.state.toggle} onToggleList={this.onToggleList} />
+        {this.state.toggle && <List list={list} />}
+      </div>
+    );
+  }
+}
+```
+
+- I have a question. I see some other case, someone don't need constroctor, instead just `state = ...`, is that a good practice?
+
+23. div vs fragment, div 就是返回一个完整实体的 div，而 fragment 则是把所有元素分散呈现，但依然作为一个整体。
+
+24. this keyword inside a function refers to the object that call the function.
+
+25. 
+```js
+class A{
+  state = {
+    name:'somebody'
+  };
+}
+
+let a = new A();
+console.log(a);
+```
+
+- 以上语句只在 node 11+ 运行，10以下不会出错。
+
+26. 在 CRA 中，babel 可以把一些新的语句翻译成旧 node 的语句，所以可以省略 class component 中的 constructor 和 super 语句。
+
+27. lifecycle method, componentDidMount, componentWillUnmount, componentDidUpdate
