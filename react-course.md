@@ -1598,11 +1598,12 @@ class App extends Component {
 
 24. this keyword inside a function refers to the object that call the function.
 
-25. 
+25.
+
 ```js
-class A{
+class A {
   state = {
-    name:'somebody'
+    name: 'somebody',
   };
 }
 
@@ -1610,8 +1611,223 @@ let a = new A();
 console.log(a);
 ```
 
-- 以上语句只在 node 11+ 运行，10以下不会出错。
+- 以上语句只在 node 11+ 运行，10 以下不会出错。
 
 26. 在 CRA 中，babel 可以把一些新的语句翻译成旧 node 的语句，所以可以省略 class component 中的 constructor 和 super 语句。
 
 27. lifecycle method, componentDidMount, componentWillUnmount, componentDidUpdate
+
+---
+
+6/22:
+
+1. functional component.
+
+```js
+import { useState, Fragment, useEffect } from 'react';
+
+const AppFc = () => {
+  const [name, setName] = useState('Patrick');
+
+  useEffect(() => {
+    console.log('useEffect -- didMount.');
+    return () => {
+      console.log('useEffect -- WillUnmount.');
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log('useEffect -- didUpdate.');
+  }, [name]);
+
+  const handleClick = () => {
+    if (name === 'Patrick') setName('Sam');
+    else setName('Patrick');
+  };
+
+  return (
+    <Fragment>
+      <h1>Hello {name}</h1>
+      <button onClick={handleClick}>Change Name</button>
+    </Fragment>
+  );
+};
+
+export default AppFc;
+```
+
+2. what is state?
+
+3. setState is an async action.
+
+4. setState will change the state and rerender.
+
+5. mutable & immutable
+
+```js
+let state = {
+  name: 'sam',
+};
+
+// mutable, 直接改变内容
+state.name = 'hello';
+
+// imutable，复制后重新赋值，
+state = {
+  ...state,
+  name: 'hello',
+};
+```
+
+- mutable:
+
+  - pros: easy to change, save space
+  - cons: hard to track the changes, hard to track setter and getter
+
+- imutable:
+
+  - pros: easy store, trigger setter.
+  - cons: extra space
+
+- could you say the pros and cons again in terms of mutable and imutable? I could not catch up, my bad.
+
+6. 可以尝试定义其他名字的 state，然后使用 setState 去改变其值。
+
+7. mounting & rendering？
+
+- initialize component and generate the virtual dom.
+
+8. 3 ways to update
+
+- new props
+- setState
+- forceUpdate
+
+9. shoulComponentUpdate
+
+10. why we need componentWillUnmount?
+
+11. fundamental : lifecycle char.
+
+12. mount and unmout 可以通过 另外一个 state 的 boolean 值来显示和关闭。
+
+13. 在嵌套组件中，如果在 render 过程中出现另外一个组件，会先运行另外一个组件的 constructor，`顺序很有趣，可以下载代码验证。`
+
+14. when is the sibling rendering? before app-didmount or after app-didmount.
+
+15. try not to access dom before mounted.
+
+16. fetch data after mounting finished.
+
+17. lifecycle method order.
+
+18. react.createElement, something props is null.
+
+19. props
+
+```js
+let a = null;
+let b = null;
+
+console.log(a === b); // return true;
+```
+
+- parent component is updated.
+
+-
+
+20. props
+
+```js
+React.createElement(HelloMessage, null);
+```
+
+21. react.memo => shouldComponentUpdate
+
+22. pureComponent
+
+- have shouldComponentUpdate that only check for some specific changes.
+
+- shouldComponentUpdate method and purecomponent mainly help us to reduce extra renders right? For better performance.
+
+23. assignment
+
+- shouldComponentUpdate
+- PureComponent
+- React.memo
+
+23. shouldComponentUpdate 在什么情况下可以阻止子组件 rerender？
+
+24. So what we are discussing now is in which case `shouldComponentUpdate` can help the subapp to prevent rerender right?
+
+25. what if no props passing to subapp? Will it rerender when the parent update?
+
+26. 在没有参数的子组件中，如果不想跟随父组件 rerender，只需要在 shouldComponentUpdate 中加入 return false;
+
+27. 概念
+
+```js
+// desctruction
+const [name, setName] = useState('');
+```
+
+28. 两个 useEffect
+
+```js
+React.useEffect(() => {
+  console.log('didUpdate');
+}, [num]);
+```
+
+29. extra render, let/useRef,
+
+```js
+const [firstCall, setFirstCall] = useState(true);
+```
+
+30.
+
+```js
+let firstCall = false;
+// outside component
+let firstCall = false;
+```
+
+31. useRef
+
+```js
+const firstCallRef = useRef(true);
+
+React.useEffect(() => {
+  if (firstCallRef.current === false) {
+    console.log('didUpdate');
+  } else {
+    firstCallRef.current = false;
+  }
+});
+```
+
+32. I have a question, why firstCallRef.current will not back to true when the component rerender?
+
+33. `useState 0 use once, like cloudsure, useRef the same.`
+
+34. excution context(different from before)
+
+- solution: global / useRef
+
+```js
+
+```
+
+35. so state in class component is kind of like something global variabel in functional component?
+
+36. create a variable to share in the function scope.
+
+37. assignment about today, why async not make this code work?
+
+```js
+handleAdd = () => {
+  this.setState({ counter: this.state.counter + 1 });
+  this.setState({ counter: this.state.counter + 1 });
+};
+```
