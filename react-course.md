@@ -2045,4 +2045,52 @@ export default TodoList;
 
 14. native html component. Use capital for your own component.
 
-15. hoc | 
+15. hoc |
+
+16. sync 跟 async 不同的行为表现：
+
+- sync：
+
+```js
+let state = 0;
+
+function setState(newState) {
+  state = newState;
+}
+
+setState(state + 1);
+
+setState(state + 1);
+
+setTimeout(() => {
+  console.log(state);
+}, 1000);
+```
+
+- async:
+
+```js
+let state = 0;
+
+function setState(newState) {
+  setTimeout(() => {
+    state = newState;
+  }, 0);
+}
+
+setState(state + 1);
+
+setState(state + 1);
+
+setTimeout(() => {
+  console.log(state);
+}, 1000);
+```
+
+- `区别在于 setState 的定义，一个是 sync 函数，另外一个是 async 函数。`
+
+---
+
+6/24:
+
+1.
