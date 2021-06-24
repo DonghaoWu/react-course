@@ -1831,3 +1831,218 @@ handleAdd = () => {
   this.setState({ counter: this.state.counter + 1 });
 };
 ```
+
+---
+
+6/23:
+
+1. class component, industry
+
+2. functional component (new feature)
+
+3. example
+
+```js
+let state = {
+  counter:0;
+}
+
+function setState(newState){
+  state = newState;
+}
+
+setState({counter: state.counter + 1});
+
+setState({counter: state.counter + 1});
+
+console.log(state);
+```
+
+4. setState is an async function.
+
+5. 例子
+
+```js
+let state = {
+  counter: 0,
+};
+
+function setState(newState) {
+  setTimeout(() => {
+    state = newState;
+  }, 0);
+}
+
+setState({ counter: state.counter + 1 });
+
+setState({ counter: state.counter + 1 });
+
+// in the second async function counter is still 0;
+
+setTimeout(() => {
+  console.log(state);
+}, 1000);
+```
+
+```js
+let state = 0;
+
+function setState(newState) {
+  setTimeout(() => {
+    state = newState;
+  }, 0);
+}
+
+setState(state + 1);
+
+setState(state + 1);
+
+// 因为还没有执行，所以都是取 state = 1；
+setTimeout(() => {
+  console.log(state);
+}, 1000);
+```
+
+6. why this work
+
+```js
+// setState((prevState)=>{
+
+// })
+
+function setState(newState) {
+  setTimeout(() => {
+    if (typeof newState === 'function') {
+      state = newState(state);
+    } else {
+      state = newState;
+    }
+  }, 0);
+}
+
+setState((prevState) => {
+  return {
+    counter: state.counter + 1,
+  };
+});
+
+setState((prevState) => {
+  return {
+    counter: state.counter + 1,
+  };
+});
+
+console.log(state);
+```
+
+7. Layout
+
+```js
+import Reeact, { Component } from 'react';
+import Header from '../Header';
+
+class Layout extends Component {
+  render() {
+    const { children } = this.props;
+    return (
+      <>
+        <header className="header">
+          <Header />
+        </header>
+        <main className="content">{children}</main>;
+      </>
+    );
+  }
+}
+
+export default Layout;
+```
+
+8. Header
+
+```js
+import Reeact, { Component } from 'react';
+
+class Header extends Component {
+  render() {
+    return <header>Header</header>;
+  }
+}
+
+export default Layout;
+```
+
+```js
+function App() {
+  return (
+    <Layout>
+      <TodoList />
+    </Layout>
+  );
+}
+```
+
+9. index.css
+
+```css
+/* css reset */
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+```
+
+10. Layout.css
+
+```css
+.header {
+  position: fixed;
+}
+
+.content {
+  padding-top: ;
+  height: 100%;
+}
+```
+
+11. TodoList.js
+
+```js
+import Reeact, { Component } from 'react';
+import TodoItem from '';
+
+class TodoList extends Component {
+  render() {
+    return (
+      <div>
+        <section className="todolist">
+          <header className="todolist__header">
+            <h4 className="heading">todolist</h4>
+          </header>
+        </section>
+        <input className="todolist__input" />
+        <ul className="todolist__content">
+          {this.state.todolist.map((todo, index) => {
+            return <TodoItem key={index} todo={todo} />;
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default TodoList;
+```
+
+12. TodoItem.js
+
+```js
+
+```
+
+13. function is about clean.
+
+14. native html component. Use capital for your own component.
+
+15. hoc | 

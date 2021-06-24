@@ -1,7 +1,15 @@
-let counter = 1;
+let state = 0;
 
-setTimeout(()=>{
-    console.log(counter);
-},3000);
+function setState(newState) {
+  setTimeout(() => {
+    state = newState;
+  }, 0);
+}
 
-counter = counter + 5;
+setState(state + 1);
+
+setState(state + 1);
+
+setTimeout(() => {
+  console.log(state);
+}, 1000);
