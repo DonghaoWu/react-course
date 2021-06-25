@@ -2093,4 +2093,61 @@ setTimeout(() => {
 
 6/24:
 
-1.
+1. exam tomorrow, if continue.
+
+2. hoc
+
+3. render props
+
+4. redux
+
+5. react-router
+
+6. open-source
+
+7. material ui
+
+8. todoList
+
+```js
+
+```
+
+9. onChange & onClick 都是 react 定制提供的。
+
+10. 一般情况下，普通的表格，如果你输入内容，都默认出现内容，但在 react 中，通过以下设定：
+
+```js
+this.state={
+  input:'',
+}
+
+value={this.state.input};
+onChange={this.handleChange};
+
+handleChange = ()=>{
+  setState({input:event.target.value})
+}
+
+handelKeyUp = (event)=>{
+  if(event.key === 'Enter'){
+    const useId = 1;
+    const title = this.state.input;
+    const completed = false;
+    const newTodo = new Todo(useId, title, completed, )
+
+    addTodo(newTodo).then((data)=>{
+      this.setState({
+        todolist:[data,...this.state.todolist],
+        input:''
+      })
+    })
+  }
+}
+```
+
+11. height:100%
+
+12. conditional renderling
+
+13.
