@@ -2150,8 +2150,117 @@ handelKeyUp = (event)=>{
 
 12. conditional renderling
 
+---
+
 6/25:
 
 1. Exam day: 23，react-exam-1
 
 2. button - black - hover
+
+---
+
+6/26
+
+1. 19
+
+2. css reset
+
+3. sementic html
+
+- article/ session
+
+4. assume we are fetching data, add loading logo.
+
+5. assignment
+
+```js
+function getCards() {
+  return new Promise((resolve, reject) => {
+    setTImeout(() => {
+      res(cards);
+    }, 2000);
+  });
+}
+```
+
+6. high order component
+
+```jsx
+let countent = <DashBoard />;
+
+<Layout>{content}</Layout>;
+```
+
+7. class state
+
+```jsx
+class App extends Component {
+  state = {
+    actionPage: 'TodoList',
+  };
+
+  handleChange = (newActivePage) => {
+    this.setState({
+      activepage: newActivePage,
+    });
+  };
+
+  render() {
+    let content = null;
+    switch (state.activePage) {
+      case 'Dashboard':
+        content = <Dashboard />;
+        break;
+      case 'Todolist':
+        content = <Todolist />;
+        break;
+      default:
+        break;
+    }
+
+    return <Layout>{content}</Layout>;
+  }
+}
+```
+
+- 使用 state 来控制显示哪一个 component。
+- 这个用法就会失去了 url 的变化。
+- react-router
+- why should we use url
+- 22 => 20，6/28，第六周开始。
+- use url to store some data
+- location key / history key
+- redux
+- contextAPI
+
+- hoc, 解决公用 fetch data 的问题。
+- hoc 类似套壳
+
+- withTodos.js
+
+```js
+import React from 'react';
+
+const withTodos = (WrappedComponent) => {
+  return class NewComponnet extends Component {
+    state = {
+      todolist: [],
+    };
+    componentDidMount() {
+      getAllTodos().then((data) => {
+        this.setState({ todolist: data });
+      });
+    }
+    render() {
+      return <WrappedComponent todolist={this.state.data} />;
+    }
+  };
+};
+
+withTodos(Dashboard);
+```
+
+- 但是一些本地的方法因为无法接触 state 从而无法使用，所以要把所有跟 state 相关的 method 全部放进 HOC 之中，这样就有 context API 的感觉了。
+
+- render props
