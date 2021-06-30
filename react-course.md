@@ -2263,4 +2263,87 @@ withTodos(Dashboard);
 
 - 但是一些本地的方法因为无法接触 state 从而无法使用，所以要把所有跟 state 相关的 method 全部放进 HOC 之中，这样就有 context API 的感觉了。
 
+---
+
+6/29:
+
 - render props
+
+1. I have a question. I have a feeling that HOC is kind of a customize contextAPI or Redux, all of them are putting state or method into one place, then pass them down to child component, is that correct?
+
+2. render props, somthing like hoc
+
+```jsx
+import whithTodosData from '../';
+
+class RenderPropsTest extends React.Component {
+  render() {
+    return <WithTodosData render={<h1>Hello</h1>}></WithTodosData>;
+  }
+}
+
+class WithTodosData extends Componet {
+  render() {
+    const { render } = this.props;
+
+    console.log(render);
+
+    return render;
+  }
+}
+
+class RenderPropsTest extends React.Component {
+  state = {
+    title: 'todoData',
+  };
+
+  render() {
+    return (
+      <WithTodosData
+        render={<Title title="Hello world"></Title>}
+      ></WithTodosData>
+    );
+  }
+}
+```
+
+```jsx
+class RenderPropsTest extends React.Component {
+  render() {
+    return (
+      <WithTodosData
+        render={(title) => <Title title={title}></Title>}
+      ></WithTodosData>
+    );
+  }
+}
+
+class WithTodosData extends Componet {
+  render() {
+    state = {
+      data: 'todoData',
+    };
+    const { render } = this.props;
+
+    console.log(render);
+
+    return render(this.state.data);
+  }
+}
+```
+
+- 可以传递参数
+- 也可以传递 component + params
+- 也可以是一个返回 component 的函数
+- 提供一个函数/壳，让子组件自行选择自己的函数。
+- 这种方法需要在 withTodosData 组件中定义 data
+- 类似 HOC，
+- 在 withTodosData 中加入 switch，根据具体情况向子组件传递参数/function
+
+- redux
+
+- number about total count
+
+- 公用一个 render props 的 parent，不同的 parent 是不共用一个 state 的，也就是说，数据不共用，不会引起其他 component 的 rerender
+
+- 6/29 `微信群讨论：一个冷门的观点：如果使用在 useEffect 中 fetch 外部数据，要加上 []，否则会无限 render，如果使用的是本地数据，可以不加上 []，不过总的来说最好都是加上 [] 最保险。`
