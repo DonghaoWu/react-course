@@ -2347,3 +2347,186 @@ class WithTodosData extends Componet {
 - 公用一个 render props 的 parent，不同的 parent 是不共用一个 state 的，也就是说，数据不共用，不会引起其他 component 的 rerender
 
 - 6/29 `微信群讨论：一个冷门的观点：如果使用在 useEffect 中 fetch 外部数据，要加上 []，否则会无限 render，如果使用的是本地数据，可以不加上 []，不过总的来说最好都是加上 [] 最保险。`
+
+---
+
+6/30:
+
+1. redux.
+
+2. hoc
+
+3. customize hooks?
+
+4. Redux folder
+
+- React
+- Vue
+- Angular
+
+- basic redux
+
+```bash
+$ npm install redux
+$
+```
+
+```diff
++
++
++
++
+```
+
+- pure function: no side effects, same input same output, data is imutable
+
+```js
+// side effect
+const foo = (num) => {
+  return foo2(num);
+};
+
+// pure function
+const foo2 = (num) => {
+  return num;
+};
+```
+
+```js
+// mutating the object
+const foo = (obj) => {
+  obj.name = 'tom';
+  return obj;
+};
+```
+
+- first level copy is not enough, but it is fine.
+
+- Why reducer should be a pure function?
+
+```js
+console.log(store.getState());
+```
+
+```js
+store.subscribe();
+```
+
+- subscripe is checking every dispatch.
+
+- subscribe behave like a sync function / addEventListener.
+
+-
+
+```js
+function myCreateStore(reducer) {
+  let state;
+  let listener = [];
+  state = reducer(state, { type: 'init' });
+
+  function getState() {
+    return state;
+  }
+
+  function subscribe(cb) {
+    listener.push(cb);
+  }
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    listener.forEach((cb) => {
+      cb();
+    });
+  }
+
+  return {
+    getState,
+    subscribe,
+    dispatch,
+  };
+}
+```
+
+- 先运行 subscribe， 后运行 dispatch。
+
+- subscribe is trying to store some function, once find some dispatch,
+
+- observer problem
+
+-
+
+```jsx
+import React, { Component } from 'react';
+import myStore from '';
+
+class Counter extends Component {
+  componentDidMount() {
+    myStore.subscribe(() => this.forceUpdate());
+  }
+  handleAdd = () => {
+    myStore.dispatch({ type: 'counter/incremented' });
+  };
+
+  handleAdd = () => {
+    myStore.dispatch({ type: 'counter/decremented' });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Counter:{myStore.getState().value}</h1>
+        <button onClick={this.handleAdd}></button>
+      </div>
+    );
+  }
+}
+```
+
+```jsx
+import React, {useState} from 'react';
+import myStore from '';
+
+const useForceUpdate = ()=>{
+    const [update, setUpdate] = useState('');
+    return ()=>setUpdate(!update)
+}
+
+const FcCounter=()=>{
+  const [add, setAdd] = useState('');
+
+  const forUpdate = useForceUpdate();
+
+  useEffect(()=>{
+    myStore.subscribe(()=>{
+      forceUpdate();
+    })
+  },[])
+
+  const = handleAdd = () => {
+    setAdd(add + 'd');
+    forUpdate()
+    myStore.dispatch({ type: 'counter/incremented' });
+  };
+
+  const = handleAdd = () => {
+    setAdd(add + 'd')
+    forUpdate()
+    myStore.dispatch({ type: 'counter/decremented' });
+  };
+
+    return (
+      <div>
+        <h1>Counter:{myStore.getState().value}</h1>
+        <button onClick={this.handleAdd}></button>
+      </div>
+    );
+}
+```
+
+- customize hooks
+
+- 6/30: 
+
+- `在 useEffect 中增加什么很讲究，正如 redux-01 project 里面的 Counter 例子，可以探究一下`
+
+- 一个 functional component 里面的 state 改变会导致什么代码执行？
