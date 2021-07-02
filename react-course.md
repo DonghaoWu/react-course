@@ -2525,8 +2525,131 @@ const FcCounter=()=>{
 
 - customize hooks
 
-- 6/30: 
+- 6/30:
 
 - `在 useEffect 中增加什么很讲究，正如 redux-01 project 里面的 Counter 例子，可以探究一下`
 
 - 一个 functional component 里面的 state 改变会导致什么代码执行？
+
+- 7/1
+
+1. 3 ways to rerender(class): forceUpdate, state, props
+
+2. rerender 时有些语句会重执行，有些不会
+
+3. you can put forceUpdate into the useEffect [], or use the function way to setUpdate.
+
+4. but in this way, we will add more and more functions into the listener, which is not good.
+
+5. Another way is using something global, like useRef or global variabel.
+
+```js
+// way 1
+let ref = 0;
+ref = ref + 1;
+
+// way 2
+const ref = useRef(updateRef);
+
+ref.current = ref.current + 1;
+setUpdate(ref.current);
+
+// way3
+setUpdate(Math.random());
+
+// way4
+// redux
+```
+
+6. redux
+
+```js
+const ReactReduxTest = () => {
+  return (
+    <div>
+      <Counter1 />
+      <Counter2 />
+    </div>
+  );
+};
+```
+
+7. react-redux
+
+```bash
+$ npm i react-redux
+```
+
+- Provider
+
+```jsx
+<Provider store={myStore}></Provider>
+```
+
+8. connect method
+
+- connect is a function, mapStateToProps is a func, mapDispatchToProps is a func.
+
+- connect 可以顺着 Provider 找到 store state。
+
+```js
+function mapStateToProps(state) {
+  return {
+    counter: state.value,
+  };
+}
+```
+
+- mapDispatchToProps
+
+```js
+function mapDispatchToProps(dispatch) {
+  return {
+    handleAdd: () => dispatch(handleAdd()),
+    handleSub: () => dispatch(handleSub()),
+  };
+}
+```
+
+```js
+import React, { Component } from 'react';
+const MyReactReduxContext = React.createContext({});
+
+export class MyProvider extends Component {
+  render() {
+    return (
+      <MyReactReduxContext value={this.props.store}>
+        {this.props.children}
+      </MyReactReduxContext>
+    );
+  }
+}
+
+export function myConnect(mapStateToProps, mapDispatchToProps) {
+  return function (WrappedComponent) {
+    return class NewCompnnent extends React.Component {
+      static contextType = MyReactReduxContext;
+
+      componentDidMount() {
+        const { subscribe } = this.context;
+        subscribe(() => this.forceUpdate());
+      }
+      render() {
+        const { getState, dispatch } = this.context;
+        const msp = mapStateToProps(getState());
+        const mdp = mapDispatchToProps(dispatch);
+
+        return <WrappedComponent {...this.props} {...msp} {...mdp} />;
+      }
+    };
+  };
+}
+```
+
+- contextAPI
+
+- build your own react-redux
+
+- hoc `this.props`
+
+- create useSelector/useDispatch
