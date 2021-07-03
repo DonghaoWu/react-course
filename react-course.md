@@ -2653,3 +2653,149 @@ export function myConnect(mapStateToProps, mapDispatchToProps) {
 - hoc `this.props`
 
 - create useSelector/useDispatch
+
+7/3:
+
+1. useSelector / useDispatch
+
+```js
+const useForceUpdate = () => {
+  const [update, setUpdate] = useState([]);
+  return () => setUpdate([]);
+};
+
+export const useSelector = (mapStateFn) => {
+  const { getState, subscribe } = React.useContext(MyReactReduxContext);
+
+  const forceUpdate = useForceUpdate();
+
+  useEffect(() => {
+    subscribe(() => {
+      forceUpdate();
+    });
+  }, []);
+  return mapStateFn(getState());
+};
+```
+
+```js
+const counter = useSelector((state) => state.value);
+```
+
+2. useDispatch
+
+```js
+const dispatch = useDispatch();
+```
+
+3. my useDispatch
+
+```js
+const useDispatch = () => {
+  const { dispatch } = React.useContext(MyReactReduxContext);
+
+  const forceUpdate = useForceUpdate();
+
+  useEffect(() => {
+    const unsub = subscribe(() => {
+      forceUpdate();
+    });
+
+    return () => unsub();
+  }, []);
+  return dispatch;
+};
+```
+
+4. unsubscribe
+
+```js
+function myCreateStore(reducer) {
+  let state;
+  let listener = [];
+  state = reducer(state, { type: 'init' });
+
+  function getState() {
+    return state;
+  }
+
+  function subscribe(cb) {
+    listener.push(cb);
+    return () => {
+      listeners = listeners.filter((item) => item !== subCallback);
+    };
+  }
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    listener.forEach((cb) => {
+      cb();
+    });
+  }
+
+  return {
+    getState,
+    subscribe,
+    dispatch,
+  };
+}
+```
+
+```js
+import React, { Component } from 'react';
+const MyReactReduxContext = React.createContext({});
+
+export class MyProvider extends Component {
+  render() {
+    return (
+      <MyReactReduxContext.Provider value={this.props.store}>
+        {this.props.children}
+      </MyReactReduxContext.Provider>
+    );
+  }
+}
+
+export function myConnect(mapStateToProps, mapDispatchToProps) {
+  return function (WrappedComponent) {
+    return class NewCompnnent extends Component {
+      static contextType = MyReactReduxContext;
+
+      componentDidMount() {
+        const { subscribe } = this.context;
+        this.unsubscribe = subscribe(() => this.forceUpdate());
+      }
+
+      componentWillUnmount() {
+        this.unsubscribe();
+      }
+      render() {
+        const { getState, dispatch } = this.context;
+        const msp = mapStateToProps(getState());
+        const mdp = mapDispatchToProps(dispatch);
+
+        return <WrappedComponent {...this.props} {...msp} {...mdp} />;
+      }
+    };
+  };
+}
+```
+
+5. so far so good
+
+- async operation
+- redux thunk
+- typo
+- action creator: a function to return a object
+
+- sync actionCreator
+- async actionCreator
+
+```js
+dispatch(actionCreator())
+```
+
+- react-router
+- typeScript
+- open source
+- express
+- 7/18
