@@ -2780,7 +2780,7 @@ export function myConnect(mapStateToProps, mapDispatchToProps) {
 }
 ```
 
-5. so far so good
+5. saga & thunk
 
 - async operation
 - redux thunk
@@ -2793,6 +2793,8 @@ export function myConnect(mapStateToProps, mapDispatchToProps) {
 ```js
 dispatch(actionCreator())
 ```
+
+6. next week
 
 - react-router
 - typeScript
