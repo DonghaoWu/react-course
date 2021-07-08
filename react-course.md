@@ -2791,7 +2791,7 @@ export function myConnect(mapStateToProps, mapDispatchToProps) {
 - async actionCreator
 
 ```js
-dispatch(actionCreator())
+dispatch(actionCreator());
 ```
 
 6. next week
@@ -2801,3 +2801,200 @@ dispatch(actionCreator())
 - open source
 - express
 - 7/18
+
+7/6:
+
+1. react-router
+2. single page application/ seo
+3. benifit
+4. react-router in detail
+5.
+
+```js
+<BrowerRouter>
+<Link>
+<Switch>
+<Route path='' component={}>
+```
+
+- 只有在 Router 里面的 Route 才能生效。正如 Provider 一样。
+
+- conditional url path
+- MyRoute
+
+-
+
+```js
+import React from 'react';
+
+const MyRouteInstance = [];
+
+function routerRegister(routeInstance){
+  MyRouteInstances.push(routeInstance);
+  const handlePopstate = ()=>{
+    routeInstance.forceUpdate();
+  }
+  window.addEventListener('popstate')
+
+  return function unRegister(){
+    MyRouteInstance = MyRouteInstance.filter(item => item !== routeInstance);
+window.removeEventListener(handlePopstate)
+  }
+}
+
+const pathMatch = (path, exact = false) => {
+  const locationPath = window.location.pathname;
+  if (exact) {
+    return locationPath === path;
+  }
+  return locationPath.includes(path);
+};
+
+export class MyRoute extends React.Component {
+
+  handlePopstate= ()=>{
+      this.forceUpdate();
+  }
+
+  componentWillUnmount(){
+    MyRouteInstance = MyRouteInstance.filter(instance)=>instance !== this;
+    window.removeEventListener(this.handlePopstate)
+  }
+
+  componentDidmount() {
+    MyRouteInstance.push(this);
+    window.addEventListener('popstate', this.handlePopstate);
+  }
+
+  render() {
+    const { path, children, exact, component, render } = this.props;
+
+    if (patchMatch(path, exact)) {
+      if (component) {
+        return React.createElement(component, {}, null);
+      } else if (render) {
+        return render();
+      }
+      if (children) {
+        return children;
+      }
+    }
+
+    return null;
+  }
+}
+```
+
+- exact, 准确等于
+- 非 exact，可以包含
+- route render 方式的好处是可以在父组件传递 props 到子组件。
+
+-
+
+```js
+function Home() {
+  return <h1>HOME</h1>;
+}
+
+<Home></Home>;
+
+React.createElement(component, {}, null);
+```
+
+- about link
+
+```jsx
+<Switch>
+  <Link to='todolist'>Todolist</Link>
+<Switch>
+```
+
+- link is to change url
+
+```js
+export class MyLink extends React.Component {
+  handleClick = () => {
+    e.preventDefault();
+    window.history.pushState({}, '', this.props.to);
+    MyRouteInstance.forEach((instance) => {
+      instance.forceUpdate();
+    });
+  };
+  render() {
+    const { to, children } = this.props;
+
+    return (
+      <a href={to} onClick={this.handleClick}>
+        {children}
+      </a>
+    );
+  }
+}
+```
+
+- 为什么不用 a 而用其他？
+- a 的 default setting is refresh the whole page
+- remove the default setting for a.
+
+- class component - hoc, hoc-hell
+
+7/7:
+
+1. node express
+
+2. my server
+
+```js
+const http = require('http');
+const port = 4000;
+
+const serverHandler = (req, res) => {
+  const method = req.method;
+  const url = req.url;
+  const path = url.split('?')[0];
+
+  const query = querystring.parse(url.split('?')[1]);
+
+  const headers = req.headers;
+
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+
+  res.write(
+    JSON.stringify({ server: 'node-server', method, url, query, headers })
+  );
+  res.end();
+};
+
+const server = http.createServer(serverHandler);
+
+server.listen();
+```
+
+3. postman
+
+4. ui is one of the ways to make a request.
+
+5. server side data validation/client side data validation
+
+6. middleware, express.json,
+
+```js
+app.use(express.json());
+```
+
+7. res.json
+
+```js
+res.send();
+res.json();
+```
+
+8. axios
+
+```js
+axios.post('https://some.todos.com', {
+  todo: 'Buy the milk',
+});
+
+app.use(express.json());
+```
