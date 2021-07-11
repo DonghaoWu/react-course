@@ -2998,3 +2998,41 @@ axios.post('https://some.todos.com', {
 
 app.use(express.json());
 ```
+
+7/8:
+
+1. cors
+
+```js
+const cors = require('cors');
+app.use(cors());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
+```
+
+2. bin
+
+```js
+"start":"node ./bin/www"
+```
+
+3. store the log in a file.
+
+- file system
+- react redux webpack template porfolio website
+
+7/9:
+
+1. react, react-router, bootstrap, webpack / CRA
+
+2. 
+```diff
+
+```
