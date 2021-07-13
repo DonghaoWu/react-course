@@ -49,28 +49,47 @@
 
 // foo2();
 
-class MyPromise {
-    constructor(cb) {
-        this.thenCbQueue = [];
-        this.resolve = function () {
-            console.log(this)
-            // const curThenCb = this.thenCbQueue.shift();
-            // curThenCb(data);
-        };
-        this.reject = function () {
+// class MyPromise {
+//     constructor(cb) {
+//         this.thenCbQueue = [];
+//         this.resolve = function () {
+//             console.log(this)
+//             // const curThenCb = this.thenCbQueue.shift();
+//             // curThenCb(data);
+//         };
+//         this.reject = function () {
 
-        };
-        cb(this.resolve, this.reject);
-    }
+//         };
+//         cb(this.resolve, this.reject);
+//     }
 
-    then(thenCb) {
-        this.thenCbQueue.push(thenCb);
-    }
+//     then(thenCb) {
+//         this.thenCbQueue.push(thenCb);
+//     }
+// }
+
+// const p = new MyPromise((res, rej) => {
+//     res('Hello')
+// })
+//     .then(data => {
+//         console.log(data);
+//     })
+
+import React from 'react';
+
+interface IButtonProps {
 }
 
-const p = new MyPromise((res, rej) => {
-    res('Hello')
-})
-    .then(data => {
-        console.log(data);
-    })
+enum BtnSize{
+  Large='lg',
+  Small='sm',
+}
+const Button: React.FC<IButtonProps> = () => {
+  let classNameList = String[];
+
+  const className = classNameList.join(' ');
+
+  return <button>Button</button>;
+};
+
+export default Button;

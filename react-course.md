@@ -3032,7 +3032,268 @@ app.use((req, res, next) => {
 
 1. react, react-router, bootstrap, webpack / CRA
 
-2. 
+2.
+
 ```diff
 
+```
+
+---
+
+7/12: typeScript
+
+1. typeScript/ microsoft
+
+```js
+tsconfig.json;
+```
+
+-
+
+```json
+sourceMap:true
+```
+
+```bash
+$ npm i typescript
+$ tsc
+```
+
+- tsconfig.json 很重要。
+
+-
+
+```ts
+function foo(name: string, age?: number) {
+  return {
+    name: name,
+    age: age ? age : -1,
+  };
+}
+
+foo();
+
+interface TPerson {
+  name: string;
+  age: number;
+}
+
+let obj: TPerson = {
+  name: 'tom',
+  age: 18,
+};
+
+let obj2: { numa: string; age: number } = {
+  name: 'tom',
+  age: 18,
+};
+
+class Person {
+  name: string;
+  age: number;
+}
+
+let obj3: Person = {
+  name: 'tom',
+  age: 18,
+};
+
+// interface / class ?
+//
+
+function addFn(x: number, y: number): number {
+  return x + y;
+}
+
+const addArrow: (x: number, y: number) => number = (x, y) => {
+  return x + y;
+};
+
+const addFn3: typeof addFn = (x, y) => x + y;
+
+type MyAdd = (x: number, y: number) => number;
+
+const addFn4: MyAdd = (x, y) => x + y;
+
+let numOrStr: string | number;
+
+const enum CatType {
+  CuteCat = 'cuteCat',
+  SmallCat = 'SmallCat',
+}
+
+let MyCuteCat = new Cat('ana', CatType.CuteCat);
+
+// class
+
+interface Radio {
+  openRadio();
+}
+
+interface Battery {
+  batteryStatus();
+}
+
+interface BatteryWithRadio extends Radio {
+  batteryStatus();
+}
+
+class Car implements Radio {
+  openRadio() {}
+}
+
+class Cellphone implements Radio {
+  openRadio() {}
+}
+```
+
+```ts
+function toNumberArray(x: number, y: number): number[] {
+  return [x, y];
+}
+
+function toStringArray(x: string, y: string): string[] {
+  return [x, y];
+}
+
+function toArray<T>(x: T, y: T): T[] {
+  return [x, y];
+}
+
+let toStrArr = toArray<string>('a', 'a');
+
+// tuple
+let tuple: [number, Function, { name: string }] = [
+  1,
+  () => {},
+  { name: 'tom' },
+];
+
+// queue
+
+class Queue {
+  queue: T[];
+  constructor(iniQ: T[] = []) {
+    this.queue = [];
+  }
+
+  enqueue(item: T): void {
+    this.queue.unshift(item);
+  }
+  dequeue(): T {
+    return this.queue.pop();
+  }
+  getQueue(): T[] {
+    return this.queue;
+  }
+}
+
+const q = new Queue<number>();
+console.log(q.getQueue());
+
+q.enqueue(1);
+q.enqueue(2);
+
+let item = q.dequeue();
+console.log(q.getQueue());
+```
+
+---
+
+7/13: open source
+
+1. cra
+
+```js
+$ npx create-react-app pat-ui --template typescript
+```
+
+2. sass/scss
+
+- same thing, prefer SCSS
+
+- ./styles/index.scss
+
+- import
+
+```js
+import './styles/index.scss';
+```
+
+```bash
+$ npm i node-sass --save-dev
+```
+
+- create a new branch
+
+```bash
+$ git branch feature/scss
+$
+```
+
+- /styles/\_variables.scss
+
+```scss
+$white: #fff;
+```
+
+- /styles/\_reset.scss
+
+- reset / normalization
+
+```scss
+*,
+*::before,
+*::after {
+}
+```
+
+- index.scss
+
+```scss
+@import './variabels';
+@import './reset';
+```
+
+- Button.tsx
+
+```tsx
+import React from 'react';
+
+interface IButtonProps {
+  btnSize?:ButtonSize| 'lg'|'sm'
+}
+
+enum ButtonSize{
+  Large='lg',
+  Small='sm',
+}
+
+
+const Button: React.FC<IButtonProps> = (props) => {
+  const {children} = props;
+  let classNameList = String[];
+
+
+  if(btnSize === ButtonSize.Large){
+    classNameList.push('btn-lg');
+  }
+
+
+  const classNames = classNameList.join(' ');
+
+  return <button className={classNames}>{children}</button>;
+};
+
+export default Button;
+```
+
+- \_mixin.scss, mixin is a new feature.
+
+```scss
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius){
+  padding: $padding-y $padding-x;
+
+
+}
 ```
