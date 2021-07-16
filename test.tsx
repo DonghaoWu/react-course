@@ -75,21 +75,21 @@
 //         console.log(data);
 //     })
 
-import React from 'react';
+// import React from 'react';
 
-interface IButtonProps {
-}
+// interface IButtonProps {
+// }
 
-enum BtnSize{
-  Large='lg',
-  Small='sm',
-}
-const Button: React.FC<IButtonProps> = () => {
-  let classNameList = String[];
+// enum BtnSize{
+//   Large='lg',
+//   Small='sm',
+// }
+// const Button: React.FC<IButtonProps> = () => {
+//   let classNameList = String[];
 
-  const className = classNameList.join(' ');
+//   const className = classNameList.join(' ');
 
-  return <button>Button</button>;
-};
+//   return <button>Button</button>;
+// };
 
-export default Button;
+// export default Button;

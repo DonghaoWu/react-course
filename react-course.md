@@ -3291,9 +3291,23 @@ export default Button;
 - \_mixin.scss, mixin is a new feature.
 
 ```scss
-@mixin button-size($padding-y, $padding-x, $font-size, $border-radius){
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   padding: $padding-y $padding-x;
-
-
 }
 ```
+
+---
+
+7/14 notes:
+
+1. testing
+
+```js
+
+```
+
+---
+
+7/15:
+
+1. one hour interview, introduction / new feature/ communication / introduction / concept / callback function / coding ability / javascript / jsx / check your code / json file / add new features / potential
