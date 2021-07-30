@@ -3332,4 +3332,96 @@ export default Button;
 
 8. agile/scrum/live cycle
 
-9. 
+---
+
+7/30:
+
+1. previous batch
+
+2. final evaluation.
+
+3. setup your own environment.
+
+4. frontend to backend.
+
+5. phone & vpn & security key, ssh key to github, config env
+
+6. company github
+
+7. colleage, know the people
+
+8. what kind of business? top level from business concept. weakness.
+
+9. read the documentation, readme file, package.json, dependencies, scripts
+
+10. Aura.ui
+
+11. swagger api
+
+12. How could you understand the project?
+
+- VPN, Security, config env, Team, business concept, Doc, readme, package.json
+
+13. Agile Vs Waterfall
+
+- SDLC: software develop life cycle
+
+- waterfall: 
+
+- Agile: seperate the project into small parts and build on the fly.
+
+- Agile: Scrum team | Kanban team
+
+- tickets: jira software, backlog, 
+
+- tickets, sprints, backlog, 
+
+- backlog => 2 weeks Sprint => Sprint plan meeting => priority story => separate the big story into small parts => 
+
+- mock up => db => api => ui => gateway => 
+
+- pick the ticket, each two weeks have different sprint.
+
+- update jira, be sure what I am going to do. PO is not really dive into the details.
+
+- communication between designer and other members.
+
+- pagenation, client side/ server side
+
+- get the ticker, talk to other related members like ui designer or api developers, then code.
+
+- never do any thing to the maste branch
+
+- create the feature name instead of human name
+
+- code language / linter / naming
+
+- jest + enzam / jest + others
+
+- CI/CD, clone the repo then run some configuration file, help you run multiple commands.
+
+- pull request/ merge request/ 
+
+- peer review
+
+- `get tickets, talk with members to understand the requirement, do the development, do the testing, push code, CI/CD will run building/testing/linting/deploying, Merge request/pull request need peer review( code resuability, "SOLID" principle, linting)`
+
+- single responsible model
+- linting - some code rules
+- CI/CD devOps team
+
+- Sprints in two weeks
+
+- deal with code conflit
+
+- retrospective meeting, improve you job. pros & cons, how to improve it.
+
+- sprint demo meeting
+
+- daliy stand up meeting, not in detail
+
+- scrum team ( 1PO, 1leader, 1 scrum master, 1 UX designer, 2 frontend, 3 backend, 1 tester)
+
+- evaluation project.
+
+- 
