@@ -3311,3 +3311,25 @@ export default Button;
 7/15:
 
 1. one hour interview, introduction / new feature/ communication / introduction / concept / callback function / coding ability / javascript / jsx / check your code / json file / add new features / potential
+
+---
+
+7/29:
+
+1. continue, 11:00 am - 5:00 pm
+
+2. pat-ui fork
+
+3. project, peer review
+
+4. approve
+
+5. storybook and test file.
+
+6. portfolio website
+
+7. morning mutiple tasks.
+
+8. agile/scrum/live cycle
+
+9. 
