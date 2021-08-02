@@ -14,4 +14,4 @@
 
 8/2:
 
-1.
+1. woking on interview questions.
