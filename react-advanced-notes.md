@@ -15,3 +15,65 @@
 8/2:
 
 1. woking on interview questions.
+
+2. 12:30
+
+3. context-api, build context api hook
+
+4. vender call intro. context pros and cons.
+
+5. react interview helper.
+
+6. answer yes and have opinion.
+
+7. build a demo about graphQL
+
+8. GraphQL API vs REST API vs SOAP, api design pattern
+
+9. write down all the notes
+
+10. remote protocol, RESTful API
+
+11. disadvantage about RESTful API, `overfetching`
+
+12. one endpoint and query what data exactly you want
+
+13. http support caching, GraphQL only one endpoint, can not cache data, hard to handle nested and complicated query.
+
+14. authentication, let server who I am, authorisation, what is my role.
+
+15. how jwt work flow in the whole application? From front-end to backend.
+
+16. statusCode 400 can be regard as an error in the frontend.
+
+17. cookies vs localStorage, cookies can be remove, localStorage and cookie is in the local drive brower. cookies is send by http, cookie is for a super long string, localStorage is for a dictnary or map. cookie is automatically. localStorage need to be manually use, but cookie is automatically. xss quiting.
+
+18. axios, simplify fetch. Why axios, axios is for json, axios intersetor, axios promise cancel token.
+
+19. `two videos, evaluation project.`
+
+20. offer, us bank
+
+---
+
+8/2:
+
+1. chanllege, scratch, project detail
+
+2. Helen, project experice, Ellen Liang
+
+3. single page application, webpack, redux, express, rest, typeScript, jest, enzemy, recent project, customer to design their home, bootstrap, search component, user can chose their material, sort , data tables. fully charging this model, utility function. prefecent & confidence. yes, there is a sub-project.
+
+4. CRA, webpack, own boilerplate. I use webpack to config some part.
+
+5. accessibility and performance, customers facing app, production issue solved before. Have some problem I remember that when ...
+
+6. use I instead we.
+
+7. pictures will loading slower. Improve the loading pattern.
+
+8. previous project. education project. What I have done there. speech translation.
+
+9. cannot freeze, comflit time, how to solve the problem.
+
+10. show your confident, english part and logic. challenge/ confilt.
