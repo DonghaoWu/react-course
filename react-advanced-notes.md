@@ -77,3 +77,75 @@
 9. cannot freeze, comflit time, how to solve the problem.
 
 10. show your confident, english part and logic. challenge/ confilt.
+
+---
+
+8/3:
+
+1. about resume.
+
+2. vender call, updated resume like this.
+
+3. own project
+
+4. resume template
+
+5. upload and approve
+
+6. this week, ssn, ead
+
+7. zhaolin ding is in company
+
+8. review everything, try to not remove.
+
+9. next.js, graphQL, machine, get some keywords, 5 years experience.
+
+10. everything make sense.
+
+11. check working experience, personal project, open source project.
+
+12. person project, company should have a website, professional project.
+
+13. talk with people before change resume.
+
+14. google the company in the resume.
+
+15. `build a dashboad, Highcharts, play with it.`
+
+16. charts, responsibilities, styled component.
+
+17. material UI / own internal library
+
+18. check errors, double check the timeline.
+
+19. macketing name, maketing phone number.
+
+20. portfolio website, put something there, no more than one week, mock interview for anyone.
+
+21. react is one way binding right? if the data change, view change
+
+22. in the react, input part, update the state when the event change. either one way or two ways.
+
+23. one way data flow, always from parent to child.
+
+24. `watch performance & Agile-scrum, please write them down everything.`
+
+25. for introduction and experience. talk about diffent industries, never talk anything in the university
+
+26. context API mainly solves props-drilling.
+
+27. `what is the pros and cons between Context API vs Redux?`
+
+---
+
+8/4:
+
+1. agile/scrum
+
+2. Flux/MVC
+
+3. agile
+
+4. redux / context-API / MobX / custom hooks
+
+5. 
