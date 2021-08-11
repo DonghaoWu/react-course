@@ -337,4 +337,163 @@ query {
 
 8/11:
 
-1. 
+1. some idea, what is the thing they are looking for?
+
+2. macketing number, `get some license from IT team.`
+
+3. phone accessing.
+
+4. phone number is active right now, check your email and get the phone number.
+
+5. create some variables and store them.
+
+6. startTimer
+
+```html
+<p class="stopwatch__timer"></p>
+```
+
+```js
+let startTimerFlag;
+
+const timerElement = document.querySelector(domSelectors.timers);
+
+const timerBtnElement = document.querySelector(domeSelectors.timerBtn);
+
+timerBtnElement.addEventListener('click', cb);
+
+let startTimerFlag = Date.now();
+
+setInterval(() => {
+  let diffTimerMsc = Date.now() - startTimerFlag;
+}, 1000);
+
+const [hh, mm, ss] = converNumToString(num);
+
+let timerInterval;
+
+// return utc time in mili second.
+Date.now();
+```
+
+7. event loop
+
+```bash
+- event loop
+- js is using eventloop to handle async. callstack is single thread.
+- async api, the async api callback function will not execute imediatlly, it will be sent to the queue, the callback fucntion.
+
+- So after the 1 second in setInterval means just put the callback into the queue but not invoke it immediately, and the time to invoke the callback function is not gurantee because there may have some other sync code or higer priority async callback.
+
+- each function just do one thing.
+
+-
+```
+
+- assignment, event loop,
+
+- how do you explain event loop?
+
+- for the react part, what is virtual dom?
+
+- what is the benifit of react?
+
+- idea of component reuseable
+- update the component at the same time
+- cross-browser-issue
+
+- angular - framwork, learning cure is much deeper.
+
+- react - library, easier, more flexibility.
+
+- shallow dom vs virtual dom.
+
+- that is the one idea I can think so far.
+
+- What is the limitation of React?
+
+- virtual dom?
+
+- js object to reflect the dom, it is not a real dom.
+
+- by using the vd, previous dom vs next virtual dom, react will use the deep algo to compare the pvd and nvd, then find the best way to update the dom.
+
+- dom manipulation is somehow expensive. 
+
+- get a element/ change the element.
+
+- dom
+
+```js
+console.dir(document);
+
+react.creatElement()
+```
+
+- angular: template
+- react: JSX
+
+- what is JSX?
+
+- can you browser read JSX?
+
+- declaritive program?
+
+- you follow my rule, something like using the library.
+
+- imparitive programming?
+
+- OOP vs FP, interestion concept.
+
+- OOP, you are chage the inside all the time.
+
+- pure funciton, immuable, easy to debug.
+
+- oop, instance.
+
+- high order component, reuse lifecycle method.
+
+- what kind of high order compoennt you use before?
+
+- connect from react-redux
+- withRouter, permission, withError, 
+
+- what is hooks?
+
+- you cannnot use hooks in class component.
+
+- HOC hell, maintainence hell
+
+- hooks can solve, do some , custommize hook, 
+
+- useThunk, context api to reuse custommize hooks.
+
+- assignment
+
+- have you create your custom hooks before?
+
+- for authentication, I create a lot of custom hooks before.
+
+- custom hooks naming
+- you can not create the hooks inside the function component.
+
+- you cannot use hooks inside a condition./ Reason: mess up your hooks system order, also you will get a error message.
+
+- what is pure compoennt?
+
+- pure compoent is the compoennt is about shouldcompoentn update.
+
+- reducer redundant update
+- for class compoent.
+
+- what is react.memo?
+
+- for the functional react.memo. shouldComponentUpdate.
+
+- userCallBack, useRef, useEffect
+
+- story: challenging in the past.
+
+- dating app design diagram system
+
+- 
