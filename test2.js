@@ -30,18 +30,33 @@
 
 // console.log(state)
 
-function converNumToTime(num) {
-  let hour = (num - (num % 3600)) / 3600;
-  if (hour < 10) hour = `0${hour}`;
+// ----------8/10-----------
 
-  num = num - 3600 * hour;
-  let minute = (num - (num % 60)) / 60;
-  if (minute < 10) minute = `0${minute}`;
+// function converNumToTime(num) {
+//   let hour = (num - (num % 3600)) / 3600;
+//   if (hour < 10) hour = `0${hour}`;
 
-  let second = num - 60 * minute;
-  if (second < 10) second = `0${second}`;
+//   num = num - 3600 * hour;
+//   let minute = (num - (num % 60)) / 60;
+//   if (minute < 10) minute = `0${minute}`;
 
-  return [`${hour}`, `${minute}`, `${second}`];
-}
+//   let second = num - 60 * minute;
+//   if (second < 10) second = `0${second}`;
 
-console.log(converNumToTime(3700));
+//   return [`${hour}`, `${minute}`, `${second}`];
+// }
+
+// console.log(converNumToTime(3700));
+
+// ----------8/11-----------
+let updateClickCount = (function () {
+  let counter = 0;
+  return function () {
+    ++counter;
+  };
+})();
+
+// Please point out which is higher order function and callback function.
+let res = arr.map((el) => {
+  return el + 1;
+});

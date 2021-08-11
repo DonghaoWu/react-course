@@ -230,102 +230,100 @@ query {
   - http `GET` request, URL, JSON, functions on the server,
   - In GraphQL API, the list of fields (considering both the Mutationand the Query types) is `identical to the list of endpoints in a REST API.`
 
-
 - GraphQL uses its own type system to define the schema of an API, , with its syntax called Schema Definition Language (SDL). The schema serves as a contract between the server and the client to define how a client can access the data.
 
-- Once the schema is defined, the front-end and back-end teams can work independently, as the front-end can be easily tested with mock data. 
+- Once the schema is defined, the front-end and back-end teams can work independently, as the front-end can be easily tested with mock data.
 
 - `If you are aiming to develop an API to be used on a mobile application you should have GraphQL as first option because bandwidth usage matters. If your application requires a robust API, with caching and a monitoring system you should go with REST.`
 
-
 ---
+
 6. what is web-component?
 
-  - Web Components is a suite of different technologies allowing you to create reusable custom elements — with their functionality encapsulated away from the rest of your code — and utilize them in your web apps.
+- Web Components is a suite of different technologies allowing you to create reusable custom elements — with their functionality encapsulated away from the rest of your code — and utilize them in your web apps.
 
-  - Web Components aims to solve such problems — it consists of three main technologies, which can be used together to create versatile custom elements with encapsulated functionality that can be reused wherever you like without fear of code collisions.
+- Web Components aims to solve such problems — it consists of three main technologies, which can be used together to create versatile custom elements with encapsulated functionality that can be reused wherever you like without fear of code collisions.
 
-  - it is nativelly supported by browser, also support HTML JS CSS.
+- it is nativelly supported by browser, also support HTML JS CSS.
 
 7. Do have experience with accessibility? What is the most recent bug you fix related to accessibility?
 
-  - example: non-sememtic tag.
+- example: non-sememtic tag.
 
 8. Do have experience with cross-browser issue? What is the most recent bug you fix related to cross-browser issue?
 
-  - apple safari:disable local storage, fix it with cookie services, the application crashed, and I am the one fixed the issue.
+- apple safari:disable local storage, fix it with cookie services, the application crashed, and I am the one fixed the issue.
 
 9. When do you graduate?
-  - I graduate at 2010.
+
+- I graduate at 2010.
 
 10. Do you have experience with Docker?
 
-  - Yes, we are using it to set up our local develpment enviroment.
+- Yes, we are using it to set up our local develpment enviroment.
 
 11. What is SPA?
 
-  - MPA is fetching mutiple pages from server side.
-  - SPA is fetching the whole page once, then change the page by some JS functions.
-  - SPA has load problem which is slow when the application is large.
-  - To fix it, we can use lazy loading and serverside rendering.
+- MPA is fetching mutiple pages from server side.
+- SPA is fetching the whole page once, then change the page by some JS functions.
+- SPA has load problem which is slow when the application is large.
+- To fix it, we can use lazy loading and serverside rendering.
 
- 12.  What are some features in HTML5 you are using?
+12. What are some features in HTML5 you are using?
 
-  - nav tag
-  - sidebar tag
-  - article tag
+- nav tag
+- sidebar tag
+- article tag
 
 13. `cookies vs local storage`
 
-  - Cookies are smaller and send server information back with every HTTP request, while LocalStorage is larger and can hold information on the client side.
+- Cookies are smaller and send server information back with every HTTP request, while LocalStorage is larger and can hold information on the client side.
 
-  -  Cookies hold a very small amount of data at a maximum capacity of 4KB. Cookies are used in different ways, such as in storing the pages visited on a site or a user’s login information. Cookies are limited in that Cookies can only store strings.
+- Cookies hold a very small amount of data at a maximum capacity of 4KB. Cookies are used in different ways, such as in storing the pages visited on a site or a user’s login information. Cookies are limited in that Cookies can only store strings.
 
-  - One of the most important differences is that unlike with cookies, data does not have to be sent back and forth with every HTTP request.
+- One of the most important differences is that unlike with cookies, data does not have to be sent back and forth with every HTTP request.
 
-  - Cookies are primarily for reading server-side, local storage can only be read by the client-side. 
+- Cookies are primarily for reading server-side, local storage can only be read by the client-side.
 
-  - Local storage are accessible from the client-side only (web servers can't access them directly). 
+- Local storage are accessible from the client-side only (web servers can't access them directly).
 
-  - Unlike Cookies where all Cookies (for that domain) are sent on each request, Local and Session Storage data aren't sent on each HTTP request. They just sit in your browser until someone requests it.
+- Unlike Cookies where all Cookies (for that domain) are sent on each request, Local and Session Storage data aren't sent on each HTTP request. They just sit in your browser until someone requests it.
 
-  - Cookies
+- Cookies
 
-    - Has different expiration dates (both the server or client can set up expiration date)
-    - The Client can't access the Cookies if the HttpOnly flag is true
-    - Has SSL Support
-    - Data are transferred on each HTTP request
-    - 4kb limit
+  - Has different expiration dates (both the server or client can set up expiration date)
+  - The Client can't access the Cookies if the HttpOnly flag is true
+  - Has SSL Support
+  - Data are transferred on each HTTP request
+  - 4kb limit
 
-  - Local Storage
+- Local Storage
 
-    - Has no expiration date
-    - Client only
-    - Has no SSL support
-    - Data are not transferred on each HTTP request
-    - 5 mb limit (check with the browser)
+  - Has no expiration date
+  - Client only
+  - Has no SSL support
+  - Data are not transferred on each HTTP request
+  - 5 mb limit (check with the browser)
 
-  - doc. [cookies vs localStorage](https://dev.to/iggredible/cookies-vs-local-storage-vs-session-storage-3gp3)
-
+- doc. [cookies vs localStorage](https://dev.to/iggredible/cookies-vs-local-storage-vs-session-storage-3gp3)
 
 14. Do you have experience with responsive design?
 
-  - set the breakpoint
-  - how do you set initial scale for devices?
-    - view-port in the head-tag
+- set the breakpoint
+- how do you set initial scale for devices?
+  - view-port in the head-tag
 
 15. `differnt types of CSS position.(static, fixed, absulute, relative, sticky).`
 
 16. what is z-index in CSS?
 
-  - An element with greater stack order is always in front of an element with a lower stack order.
+- An element with greater stack order is always in front of an element with a lower stack order.
 
 17. Do you use flexbox or css-grid? What do you prefer and why?
 
-  - flexbox, more broswers and mobile devices supported, also nativelly support flexbox.
+- flexbox, more broswers and mobile devices supported, also nativelly support flexbox.
 
-
---- 
+---
 
 8/10:
 
@@ -333,4 +331,10 @@ query {
 
 2. technical interview.
 
-3. 
+3.
+
+---
+
+8/11:
+
+1. 
