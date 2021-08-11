@@ -323,3 +323,14 @@ query {
 17. Do you use flexbox or css-grid? What do you prefer and why?
 
   - flexbox, more broswers and mobile devices supported, also nativelly support flexbox.
+
+
+--- 
+
+8/10:
+
+1. vendor calls
+
+2. technical interview.
+
+3. 

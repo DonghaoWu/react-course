@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <h1>Timer</h1>
+    <h2 id="timer">
+      <p id="hour">00</p>
+      <p>:</p>
+      <p id="minute">00</p>
+      <p>:</p>
+      <p id="second">00</p>
+      <p>:</p>
+    </h2>
+
+    <button id="start" onclick="start()">start</button>
+    <button id="clear" onclick="clearWatch()">clear</button>
+
+    <script>
+      let timer;
+      let isStarted = false;
+
+      let myButton = document.getElementById('start');
+      let currentNum = Number(document.getElementById('timer').innerHTML);
+
+      function clearWatch() {
+        document.getElementById('timer').innerHTML = `0`;
+        clearInterval(timer);
+      }
+
+      function start() {
+        if (!isStarted) {
+          isStarted = true;
+          myButton.innerHTML = 'Pause';
+          timer = setInterval(function () {
+            currentNum++;
+            document.getElementById('timer').innerHTML = `${currentNum}`;
+          }, 1000);
+        } else {
+          clearInterval(timer);
+          isStarted = false;
+          myButton.innerHTML = 'Start';
+        }
+      }
+    </script>
+  </body>
+</html>
