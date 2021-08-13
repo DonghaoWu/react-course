@@ -418,7 +418,7 @@ Date.now();
 
 - by using the vd, previous dom vs next virtual dom, react will use the deep algo to compare the pvd and nvd, then find the best way to update the dom.
 
-- dom manipulation is somehow expensive. 
+- dom manipulation is somehow expensive.
 
 - get a element/ change the element.
 
@@ -427,7 +427,7 @@ Date.now();
 ```js
 console.dir(document);
 
-react.creatElement()
+react.creatElement();
 ```
 
 - angular: template
@@ -456,7 +456,7 @@ react.creatElement()
 - what kind of high order compoennt you use before?
 
 - connect from react-redux
-- withRouter, permission, withError, 
+- withRouter, permission, withError,
 
 - what is hooks?
 
@@ -464,7 +464,7 @@ react.creatElement()
 
 - HOC hell, maintainence hell
 
-- hooks can solve, do some , custommize hook, 
+- hooks can solve, do some , custommize hook,
 
 - useThunk, context api to reuse custommize hooks.
 
@@ -496,4 +496,58 @@ react.creatElement()
 
 - dating app design diagram system
 
-- 
+---
+
+8/12
+
+1. resume in the pool
+
+2. get ready for call
+
+3. work authorization licien
+
+4. photo, visa, dob, location
+
+5. vandor call, open for relocation
+
+6. current position
+
+7. technical question: const mutable, how do you condsider babel?
+
+8. Ok, it works for me, after first job. 
+
+9. relocation after 6 months
+
+10. walmart,write down their name
+
+11. walmart one / tesla one
+
+12. how to do the support
+
+13. big room, enough lable, set everything, download java 16.
+
+14. one screen.
+
+15. tomorrow, make sure hardware and software thing. see the background.
+
+16. set up the virtural background
+
+17. 20 mutiple choice questions.
+
+18. improve yourself, you also know the questions.
+
+19. technical questions.
+
+20. point them out.
+
+21. walmart is kind of interesting.
+
+22. first come first get 
+
+23. one week.
+
+24. ask the IT team.
+
+25. test your phone. email address.
+
+26. walmart questions.

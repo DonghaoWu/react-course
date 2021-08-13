@@ -93,23 +93,104 @@
 // console.log(uniqueId());
 
 // ---
-(function () {
-  let num = 0;
-  console.log('this is the start', Date.now());
+// (function () {
+//   let num = 0;
+//   console.log('this is the start', Date.now());
 
-  while (num !== 1000000000) {
-    num++;
+//   while (num !== 1000000000) {
+//     num++;
+//   }
+
+//   setTimeout(function cb() {
+//     console.log(`Callback 1`, Date.now());
+//   }); // has a default time value of 0
+
+//   console.log('this is just a message', Date.now());
+
+//   setTimeout(function cb1() {
+//     console.log('Callback 2:', Date.now());
+//   }, 0);
+
+//   console.log('this is the end', Date.now());
+// })();
+
+// -------8/12
+// pure fucntion
+// function priceAfterTax(productPrice) {
+//   return productPrice * 0.2 + productPrice;
+// }
+// // impure function
+// let tax = 20;
+// function calculateTax(productPrice) {
+//   return productPrice * (tax / 100) + productPrice;
+// }
+// // impure function
+// function getSquare(items) {
+//   var len = items.length;
+//   for (var i = 0; i < len; i++) {
+//     items[i] = items[i] * items[i];
+//   }
+//   return items;
+// }
+
+// connect(mapStateToProps, mapDispatchToProps)(UserPage);
+// withRouter(UserPage);
+// withStyles(styles)(UserPage);
+
+// //withdLoading.js
+// import React from 'react';
+// function WithLoading(Component) {
+//   return function WihLoadingComponent({ isLoading, ...props }) {
+//     if (!isLoading) return <Component {...props} />;
+//     return <p>Hold on, fetching data might take some time.</p>;
+//   };
+// }
+// export default WithLoading;
+
+// withAuth.js
+// import React from 'react';
+// export function withAuth(Component) {
+//   return class AuthenticatedComponent extends React.Component {
+//     isAuthenticated() {
+//       return this.props.isAuthenticated;
+//     }
+//     render() {
+//       const loginErrorMessage = (
+//         <div>
+//           Please <a href="/login">login</a> in order to view this part of the
+//           application.
+//         </div>
+//       );
+//       return (
+//         <div>
+//           {this.isAuthenticated === true ? (
+//             <Component {...this.props} />
+//           ) : (
+//             loginErrorMessage
+//           )}
+//         </div>
+//       );
+//     }
+//   };
+// }
+// export default withAuth;
+
+class App extends React.Component {
+  names = ['Peter', 'Bruce', 'Clark'];
+  state = { name: 'Anonymous' };
+  componentDidMount() {
+    setInterval(() => {
+      const name = this.generateName();
+      this.setState({ name });
+    }, 1000);
   }
-
-  setTimeout(function cb() {
-    console.log(`Callback 1`, Date.now());
-  }); // has a default time value of 0
-
-  console.log('this is just a message', Date.now());
-
-  setTimeout(function cb1() {
-    console.log('Callback 2:', Date.now());
-  }, 0);
-
-  console.log('this is the end', Date.now());
-})();
+  generateName = () => {
+    this.names[Math.floor(Math.random() * this.names.length)];
+  };
+  render() {
+    return <View name={this.state.name} />;
+  }
+}
+// React.memo
+import { memo } from 'React';
+const View = memo(({ name }) => `Hi, I'm ${name}`);
