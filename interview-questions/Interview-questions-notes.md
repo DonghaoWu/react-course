@@ -514,7 +514,7 @@ react.creatElement();
 
 7. technical question: const mutable, how do you condsider babel?
 
-8. Ok, it works for me, after first job. 
+8. Ok, it works for me, after first job.
 
 9. relocation after 6 months
 
@@ -542,7 +542,7 @@ react.creatElement();
 
 21. walmart is kind of interesting.
 
-22. first come first get 
+22. first come first get
 
 23. one week.
 
@@ -551,3 +551,153 @@ react.creatElement();
 25. test your phone. email address.
 
 26. walmart questions.
+
+---
+
+8/13:
+
+1. event loop:
+
+- review event-loop article in `ever-note`.
+
+- queue: FIFO, stack: FILO
+
+- callstack is a `FILO` structure.
+
+- how event-loop work?
+
+- web api is wrote by c++, another thread.
+
+- how event loop works?
+
+- after the time reach, web api will throw the callback function into the event queue, the event loop will check the callstack if is empty, then if it's true, will pick the first one callback function in the queue and invoke it.
+
+-
+
+```js
+// mock api
+const mockApiCall = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('get responese.');
+    }, 2000);
+  });
+};
+
+const foo = () => {
+  console.log('start');
+  let startTimer = Date.now();
+  mockAPiCall().then((data) => {
+    let endTimer = Date.now();
+    console.log('time diff', endTimer - startTimer);
+  });
+};
+
+const asyncFoo = async () => {
+  return 5;
+};
+
+// will return pending promise.
+console.log(asyncFoo());
+
+const anotherAsync = async () => {
+  let data = await new Promise((res, rej) => {
+    setTimeout(() => {
+      res('get responese.');
+    }, 2000);
+  });
+  return data;
+};
+```
+
+- if we change i < 1000000, time difference will be greater.
+
+- 要明确 callback function 是什么时候放进 event queue，还有什么时候执行的？
+
+- 难点：promise 是怎样定义的，它的 callback 是什么时候执行的？
+
+- 如何使用 async 去定义 promise。
+
+- draw the event loop callstack
+
+- solve all the algo questions.
+
+- debounds, appleOA, why do we need debounds?
+
+- higher order function.
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+const mockApiCall = (query)=>{
+  new Promise((res, res)=->{
+    setTimeout(()=>{
+      res(`Data back`, Query:${query})
+    })
+  })
+}
+const App = () => {
+  const [input, setInput] = useState('');
+
+  useEffect(() => {
+    if (input) {
+      mockApiCall(input).then(data=>{
+        console.log(data);
+      })
+    }
+  });
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  return (
+    <div>
+      <input value={input} onChange={handleChange} />
+      <div>{input}</div>
+    </div>
+  );
+};
+```
+
+only make request when a user stop typing in 1 second
+
+- 我关注众新闻有一段时间了，真心支持和喜欢你们的真实报道，也给大众看到了不一样的中国。但个人在这里提一个小小建议，众新闻报道的负面新闻，或者说揭露大陆弊端的新闻占比有点高，首先声明这跟政治立场无关，我也不反对这种报道，个人也承认这种负面的新闻天天都有在发生。但作为一个观众层面，我作为一个观众，从众新闻中看到的中国是9坏1好的，出来的效果也偏向对中国大陆的负面印象。举一个不恰当的例子，按比例计算，香港700万人每天发生一件丑闻，大陆14亿人一天就大概发生20件丑闻，我相信把这20件丑闻放在众新闻全部报道可能30分钟时间都不够用，如果在一集的众新闻里面全部报道负面新闻，给观众的感觉就是中国大陆很坏。那么返回刚才那个例子，虽然是有20件丑闻，那么就说明大陆真的很差吗，按比例算香港发生1件丑闻是不是也很差？ 最后再想强调一下，不反对报道负面新闻，也支持报道真实情况，大陆每天发生的负面新闻也足够众新闻做一个星期的节目。但是否要一直大幅度报道负面新闻，这也不是我作为一个观众决定的，这取决于众新闻的使命，大幅度报道负面新闻客观上是让人觉得中国大陆一无是处，如果众新闻是想让观众产生这种观感那也是一种使命，我干预不了。如果众新闻是想推动国家发展和展示客观形象，那又是不同的使命。大陆是否一无是处，众新闻说了不算，大陆人说了不算，香港人说了也不算，共产党说了也不算，世界都在看，中国改革开放这么多年，有成就也有错误，不希望看到一味的吹捧，也不希望看到一味的贬低。作为媒体人，维持中立和给出客观评价也是很重要的。
+
+
+- 如何实现 mount file without react-router. conditional rendering.
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
