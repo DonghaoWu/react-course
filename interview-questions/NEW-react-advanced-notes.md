@@ -148,7 +148,43 @@
 
 4. redux / context-API / MobX / custom hooks
 
-
 <!-- 8/16 meeting nodes -->
 
-1. 
+1. debounce
+
+```js
+const debounce = (cb, delayTime) => {
+  return () => {
+    setTimeout(cb, delayTime);
+  };
+};
+
+const newApi = debounce(mockAPiCall, 2000);
+```
+
+2. throttle.
+
+- resize
+- window.resize
+- trigger resize function
+
+3. domino.
+
+- old tech. es5, backbone.
+- react, react native, spa
+- spa benefits
+- react-router to control the pages
+- we are using js to control all.
+- what can cause your application loading slow, spa, first time loading problem, lazy loading, server-side rendering.
+- server location, CDN
+- react itself
+- react is the fastest one.
+- build a website without react
+- not virtual dom
+- what do you think about react.
+- react vs MVC pattern
+- update the UI one time.
+- homedepo technology, material UI, moment js handle time, angularJS
+- Jquery training
+- interview at 4, global payment.
+- story and chanllenging.
