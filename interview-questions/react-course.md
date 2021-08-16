@@ -3366,19 +3366,19 @@ export default Button;
 
 - SDLC: software develop life cycle
 
-- waterfall: 
+- waterfall:
 
 - Agile: seperate the project into small parts and build on the fly.
 
 - Agile: Scrum team | Kanban team
 
-- tickets: jira software, backlog, 
+- tickets: jira software, backlog,
 
-- tickets, sprints, backlog, 
+- tickets, sprints, backlog,
 
-- backlog => 2 weeks Sprint => Sprint plan meeting => priority story => separate the big story into small parts => 
+- backlog => 2 weeks Sprint => Sprint plan meeting => priority story => separate the big story into small parts =>
 
-- mock up => db => api => ui => gateway => 
+- mock up => db => api => ui => gateway =>
 
 - pick the ticket, each two weeks have different sprint.
 
@@ -3400,7 +3400,7 @@ export default Button;
 
 - CI/CD, clone the repo then run some configuration file, help you run multiple commands.
 
-- pull request/ merge request/ 
+- pull request/ merge request/
 
 - peer review
 
@@ -3424,4 +3424,4 @@ export default Button;
 
 - evaluation project.
 
-- 
+<!-- This note ends on 8/16. -->

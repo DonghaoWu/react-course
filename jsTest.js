@@ -671,3 +671,9 @@ class Position {
     this.setGyroPosition(randomPosition);
   }
 }
+
+// ssh-keygen -o
+
+// cat /Users/donghao/.ssh/id_rsa.pub 
+
+// SSH and OPO keys
