@@ -489,27 +489,185 @@
 // recieve data(after 2 second)
 // end, time elapsed 2000.
 
-const method1 = () => {
-  return new Promise((res, rej) => {
-    setTimeout(() => {
-      res('recieve data');
-    }, 2000);
+// const method1 = () => {
+//   return new Promise((res, rej) => {
+//     setTimeout(() => {
+//       res('recieve data');
+//     }, 2000);
+//   });
+// };
+
+// const method2 = async () => {
+//   // phase 1
+//   const preTime = Date.now();
+//   console.log('phase 1, start');
+
+//   // phase 2
+//   const mes = await method1();
+//   console.log(`phase 2, return message: ${mes}`);
+//   const curTime = Date.now();
+
+//   // phase 3
+//   const timeElapsed = curTime - preTime;
+//   console.log('phase 3, end, time elapsed ' + timeElapsed);
+// };
+
+// method2();
+
+// ------------------8/12 screen questions ------------------
+// ------------------8/12 screen questions ------------------
+// ------------------8/12 screen questions ------------------
+
+// Q1: Given an array of integers, return an array of integers which contains
+// [1st integer, sum of next 2 integers, sum of next 3 integers...]
+
+// example: sumArray([1,6,8,5,9,4,7,2]) ===> [1,14,18,9]
+// example: sumArray([1,6,8,5,9,4,7,2,9,10,5]) ===> [1,14,18,28,5]
+
+// const sumArray = (arr) => {
+//   let ans = [];
+//   let amount = 1;
+//   while (arr.length) {
+//     let counter = amount;
+//     let curSum = 0;
+//     while (counter > 0 && arr.length) {
+//       let el = arr.shift();
+//       curSum += el;
+//       counter--;
+//     }
+//     ans.push(curSum);
+//     amount++;
+//   }
+//   return ans;
+// };
+
+// console.log(sumArray([1, 6, 8, 5, 9, 4, 7, 2]));
+// console.log(sumArray([1, 6, 8, 5, 9, 4, 7, 2, 9, 10, 5]));
+
+//  Q2:
+const persons = [
+  {
+    name: 'a',
+    DOB: '11/28/1989',
+    salary: '50000',
+  },
+  {
+    name: 'b',
+    DOB: '11/20/1958',
+    salary: '40000',
+  },
+  {
+    name: 'c',
+    DOB: '10/04/1990',
+    salary: '30000',
+  },
+  {
+    name: 'd',
+    DOB: '08/25/1986',
+    salary: '20000',
+  },
+  {
+    name: 'e',
+    DOB: '11/10/1989',
+    salary: '10000',
+  },
+  {
+    name: 'f',
+    DOB: '09/23/1989',
+    salary: '80000',
+  },
+  {
+    name: 'g',
+    DOB: '01/09/1986',
+    salary: '90000',
+  },
+  {
+    name: 'h',
+    DOB: '04/01/1990',
+    salary: '50000',
+  },
+];
+
+// Find the average salary.
+const findAverageSalary = (persons) => {
+  let sum = 0;
+  for (let i = 0; i < persons.length; i++) {
+    sum += Number(persons[i].salary);
+  }
+  return sum / persons.length;
+};
+
+console.log(findAverageSalary(persons));
+
+// Sort on the basic of age in descending order, consider only year for age.
+const sortAgeInDescendingOrder = (persons) => {
+  let res = [...persons];
+  res.sort((a, b) => {
+    return new Date(a.DOB).getFullYear() - new Date(b.DOB).getFullYear();
   });
+  return res;
 };
 
-const method2 = async () => {
-  // phase 1
-  const preTime = Date.now();
-  console.log('phase 1, start');
+console.log(sortAgeInDescendingOrder(persons));
 
-  // phase 2
-  const mes = await method1();
-  console.log(`phase 2, return message: ${mes}`);
-  const curTime = Date.now();
+// Find people above 32 years, consider only year for age.
 
-  // phase 3
-  const timeElapsed = curTime - preTime;
-  console.log('phase 3, end, time elapsed ' + timeElapsed);
+const findPeopleAbove32 = (persons) => {
+  let ans = persons.filter((el) => {
+    return new Date().getFullYear() - new Date(el.DOB).getFullYear() > 32;
+  });
+  return ans;
 };
 
-method2();
+console.log(findPeopleAbove32(persons));
+
+// Q3: output for the code:
+
+function demoFunc() {
+  var name = 'this is Tom.';
+  console.log(name); // 'this is Tom.'
+
+  demoFunc2(); // 'this is Tom.'
+
+  function demoFunc2() {
+    console.log(name);
+  }
+}
+
+demoFunc();
+
+// Q4: output for the code:
+
+console.log(myName); //undefined
+var myName;
+
+myName = 'Tom';
+
+function displayName(myName) {
+  console.log(myName);
+}
+
+console.log(myName); //'Tom'
+displayName(myName); //'Tom'
+displayName(); //undefined
+
+// Q5: Difference between call and apply?
+
+// Q6: class component and function compoennt?
+
+// Q7: What are refs and how do we create them?
+
+// Q8: output for the code:
+
+class Position {
+  setGyroPosition(pos) {
+    if (pos === null || typeof pos === 'undefined') {
+      throw new Error('The position must be defined.');
+    }
+    this.pos = pos;
+  }
+  constructor() {
+    const randomPosition = MativiModules.MyGyroModule.gyoPosition();
+    this.setGyroPosition(randomPosition);
+  }
+}
