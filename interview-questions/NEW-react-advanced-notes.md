@@ -188,3 +188,67 @@ const newApi = debounce(mockAPiCall, 2000);
 - Jquery training
 - interview at 4, global payment.
 - story and chanllenging.
+
+---
+
+8/18:
+
+- share the screen
+1. download java jdk.
+2. download the app.
+3. nohup java -Dapple.awt.UIElement=true Client YourName &
+4. enabel the terminal
+
+- share your voice
+- use mobile to join the google meeting.
+- download the app call google doc
+
+
+1. how to react batch
+
+- yes, I used it before.
+- never say a little bit.
+
+2. what kind of compoennt did you create?
+
+3. most chanllenging component?
+
+4. somthing like google calender
+
+5. how could you share between components?
+
+6. share the data from child component to the parent component? What is `render props`?
+
+7. mounting, updating, unmounting, example
+
+8. I have use lazy loading in my project.
+
+9. webpack is helping with the lazy loading.
+
+10. use webpack to do the library lazy loading.
+
+11. obserable???
+
+12. talk about authentication. give me some time to organize it.
+
+13. web-component, how could we create a web-component?
+
+14. May I have some hint?
+
+15. show your attitude
+
+16. 80%
+
+17. let them like you, coworker
+
+18. this is pretty simple.
+
+19. what is debounce?
+
+20. How can you know the device browser?
+
+21. broswer duckType
+
+22. display/opacity/visibility.
+
+23. fill the gap and make it smooth
