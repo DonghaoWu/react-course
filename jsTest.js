@@ -1149,3 +1149,93 @@ const Greeting = React.memo((props) => {
   console.log('Greeting Comp render');
   return <h1>Hi {props.name}!</h1>;
 });
+
+// render props
+import React, { Component } from 'react';
+
+class ProductData extends Component {
+  state = {
+    products: [],
+  };
+
+  componentDidMount() {
+    getProducts().then((products) => {
+      this.setState({
+        products,
+      });
+    });
+  }
+
+  render() {
+    return this.props.render({
+      products: this.state.products,
+    });
+  }
+}
+
+export { ProductData };
+
+// render props usage:
+{
+  /* <ProductData
+  render={({ products }) => <ProductList products={products} />}
+/>
+
+
+<ProductData
+  render={({ products }) => <ProductTable products={products} />}
+/>
+
+
+<ProductData render={({ products }) => (
+  <h1>
+      Number of Products:
+      <strong>{products.length}</strong>
+  </h1>
+  
+)} /> */
+}
+
+//HOC
+// import React, { Component } from "react";
+
+// const withProductData = WrappedComponent =>
+//   class ProductData extends Component {
+//     state = {
+//       products: []
+//     };
+
+//     componentDidMount() {
+//       getProducts().then(products => {
+//         this.setState({
+//           products
+//         });
+//       });
+//     }
+
+//     render() {
+//       return <WrappedComponent products={this.state.products} />;
+//     }
+//   };
+
+// export { withProductData };
+
+// 8/19 --- Gulp
+
+// gulp.task('start', ['build'], function () {
+//   return nodemon({ script: 'server.js' });
+// });
+
+// gulp.task('build', function (callback) {
+//   return webpack(config, callback);
+// });
+
+// gulp.task('build:watch', function () {
+//   return gulp.watch(['src/public/*.js', 'src/views/*html'], ['build']);
+// });
+
+// command `npx run gulp`
+
+
+// ------ 8/20 ------
+

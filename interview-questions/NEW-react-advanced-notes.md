@@ -194,6 +194,7 @@ const newApi = debounce(mockAPiCall, 2000);
 8/18:
 
 - share the screen
+
 1. download java jdk.
 2. download the app.
 3. nohup java -Dapple.awt.UIElement=true Client YourName &
@@ -202,7 +203,6 @@ const newApi = debounce(mockAPiCall, 2000);
 - share your voice
 - use mobile to join the google meeting.
 - download the app call google doc
-
 
 1. how to react batch
 
@@ -252,3 +252,21 @@ const newApi = debounce(mockAPiCall, 2000);
 22. display/opacity/visibility.
 
 23. fill the gap and make it smooth
+
+---
+
+8/19
+
+1. Grunt and Gulp are tools you want to look at when you have many developers working on a large project with different operation systems where there are several 'tasks' involved in doing everyday things with the project.
+
+2. They are perfect fro when you have a lot of 'task' but you also need to abstract away the operation system so you `can avoid using shell specific commands.`
+
+3. If you work as a single developer using NPM script is more than enough most of the time. Because Gulp and Grunt are ofter just wrapping another tool you can run directly in your shell.(`handle different shell commands`).
+
+4. Webpack is a bundler that can do many different things but you should use it primarily for bundling JS and try to keep away from using too many plugins as it starts to slow down the bundling process a lot when the project grows.
+
+5. Ideally you want to use Webpack for what it was made for and use Npm scripe, Grunt and Gulp for anything that can be done outside of the bunding process.
+
+6. Gulp ia handling more than bundling, webpack is focuing on bundling.
+
+7. Both of them can help you monitor files just added or modifications to existing files in specific directories. Furthermore, they give an opportunity to create tasks to process those files. 
