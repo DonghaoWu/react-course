@@ -270,3 +270,10 @@ const newApi = debounce(mockAPiCall, 2000);
 6. Gulp ia handling more than bundling, webpack is focuing on bundling.
 
 7. Both of them can help you monitor files just added or modifications to existing files in specific directories. Furthermore, they give an opportunity to create tasks to process those files. 
+
+
+---
+
+8/20: 
+
+1. project: a todo app mock up.
