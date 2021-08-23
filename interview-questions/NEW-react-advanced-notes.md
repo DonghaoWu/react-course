@@ -277,3 +277,6 @@ const newApi = debounce(mockAPiCall, 2000);
 8/20: 
 
 1. project: a todo app mock up.
+
+8/22:
+1. make a questions summary.
