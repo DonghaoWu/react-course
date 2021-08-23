@@ -269,14 +269,64 @@ const newApi = debounce(mockAPiCall, 2000);
 
 6. Gulp ia handling more than bundling, webpack is focuing on bundling.
 
-7. Both of them can help you monitor files just added or modifications to existing files in specific directories. Furthermore, they give an opportunity to create tasks to process those files. 
-
+7. Both of them can help you monitor files just added or modifications to existing files in specific directories. Furthermore, they give an opportunity to create tasks to process those files.
 
 ---
 
-8/20: 
+8/20:
 
 1. project: a todo app mock up.
 
 8/22:
+
 1. make a questions summary.
+
+---
+
+8/23:
+
+1. html: semantic Html, example, readabel for screen reader, A semantic Web allows data to be shared and reused across applications, enterprises, and communities.
+
+2. css: flexbox vs grid, 
+- position
+- css box model
+- em vs rem
+
+3. callback function, `why & example`
+
+- callback function
+- high order function
+- promise
+- closure
+- ES6
+- var let and const
+- hoisting: move the declaration to the top. 
+- arrow function vs normal function
+- constructor function vs class function
+- call, bind ,apply
+- rest vs spead operator
+- string template
+
+4. react
+
+- class vs function component,
+- state vs props
+- hooks, useState, useReducer, useEffect, useRef, useCallback, useMemo, useLayoutEffect
+- pass data between component
+- Why react, what is virtual dom, what is JSX?
+- virtual DOM, js representation of the real dom, dom manipulation is expensive, repaint the whold dom. 
+- virtual dom is just update the real dom with one time.
+
+- `virtual dom advantage?`
+
+- lifecycle method,
+- HOC & render props
+
+5. DOM
+- what is dom?
+- what is event bubbling?
+- How to stop bubbling? (event.stopProagation)
+- what is event capturing? (addEventListener, third parameter.)
+- what is event delegation?
+
+6. root - window - document - html - body - div - p
