@@ -287,7 +287,8 @@ const newApi = debounce(mockAPiCall, 2000);
 
 1. html: semantic Html, example, readabel for screen reader, A semantic Web allows data to be shared and reused across applications, enterprises, and communities.
 
-2. css: flexbox vs grid, 
+2. css: flexbox vs grid,
+
 - position
 - css box model
 - em vs rem
@@ -300,7 +301,7 @@ const newApi = debounce(mockAPiCall, 2000);
 - closure
 - ES6
 - var let and const
-- hoisting: move the declaration to the top. 
+- hoisting: move the declaration to the top.
 - arrow function vs normal function
 - constructor function vs class function
 - call, bind ,apply
@@ -314,7 +315,7 @@ const newApi = debounce(mockAPiCall, 2000);
 - hooks, useState, useReducer, useEffect, useRef, useCallback, useMemo, useLayoutEffect
 - pass data between component
 - Why react, what is virtual dom, what is JSX?
-- virtual DOM, js representation of the real dom, dom manipulation is expensive, repaint the whold dom. 
+- virtual DOM, js representation of the real dom, dom manipulation is expensive, repaint the whold dom.
 - virtual dom is just update the real dom with one time.
 
 - `virtual dom advantage?`
@@ -323,10 +324,134 @@ const newApi = debounce(mockAPiCall, 2000);
 - HOC & render props
 
 5. DOM
+
 - what is dom?
 - what is event bubbling?
+- event bubbling goes from the buttom to the top of the class. When you have event in a element, the event goes from the buttom to the top elment.
+- For example, you click
+
+```html
+<div id="main">
+  <div id="parent">
+    <div id="child">child</div>
+    <div id="other">other</div>
+  </div>
+</div>
+```
+
+```js
+$('parent').click(function () {
+  console.log(`parent clicked.`);
+});
+$('child').click(function () {
+  console.log(`child clicked.`);
+});
+```
+
+```js
+const parent = document.getElementById('parent');
+const child = document.getElementById('child');
+
+parent.addEventListener('click', function () {
+  console.log('parent clicked.');
+});
+
+child.addEventListener('click', function () {
+  console.log('child clicked.');
+});
+```
+
+- when you click on the child element, you will get child and parent click function involved, this means bubbling.
+
+```js
+const parent = document.getElementById('parent');
+const child = document.getElementById('child');
+
+parent.addEventListener(
+  'click',
+  function () {
+    console.log('parent clicked.');
+  },
+  true
+);
+
+child.addEventListener('click', function () {
+  console.log('child clicked.');
+});
+```
+
+- third element in addEventListener - true means enable capturing, by default is false, which means using bubbling.
+- bubbling means involved the buttom event first, and the top event last. Event capturing is the the order reversed.
+
 - How to stop bubbling? (event.stopProagation)
+
+```html
+<div id="parent">
+  <button id="child" onclick="event.stopPropagation()">Child</button>
+</div>
+```
+
 - what is event capturing? (addEventListener, third parameter.)
+-
+
 - what is event delegation?
 
+```js
+const myList = document.getElementById('myList');
+
+myList.addEventListener('click', function (e) {
+  const target = e.target;
+
+  if (target.matches('li')) {
+    target.style.backgroundColor = 'red';
+  }
+});
+
+const newLi = document.createElement('li');
+newLi.textContent = 'hello';
+myList.appendChild(newLi);
+```
+
 6. root - window - document - html - body - div - p
+
+
+---
+
+8/24
+
+1. RESTful api:
+- client and server are totally seperated.
+
+- Using Http/Https with stateless communication
+
+- server will not remember your info, just return the response instead.
+
+- endpoint can self explained. 
+- api/users, every api can handle a resource.
+
+- get/post/put/delete
+
+- put/patch, put is updating `the whole thing`, and patch is `updating part of the target`. check if updating the whole row.
+
+- you can use post to do anything, theroically.
+
+- we can use get request to `send message / create a resouce` to the server. With url query parameters.
+
+- we do not want to delete any data, instead we add a new key name 'isDeleted'.
+
+2. status code:
+
+- 200, get success
+- 201, create success
+- 200/204, delete success
+- 401, authorized failed
+- 403, forbidden, no permission to visit.
+- 400, bad request, `The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications.`
+- 404, page not found, DNS is availabel, but page is not found.
+- the site cannot be reach.(DNS thing), no related IP address.
+- 500, server crash/ internal error
+- 503, server is not available.
+
+- you cannot do anything in the client side during the server side error, just try again.
+
+3. 
