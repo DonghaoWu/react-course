@@ -1239,22 +1239,78 @@ export { ProductData };
 // ------ 8/20 ------
 
 // ------- 8/24 -----
-function add(...args) {
-  let result = 0;
+// function add(...args) {
+//   let result = 0;
 
-  for (let arg of args) result += arg;
+//   for (let arg of args) result += arg;
 
+//   return result;
+// }
+
+// add(1); // returns 1
+// add(1, 2); // returns 3
+// add(1, 2, 3, 4, 5); // returns 15
+
+// // spread operator
+// function add(a, b, c) {
+//   return a + b + c;
+// }
+// const arr = [1, 2, 3];
+
+// add(...arr);
+
+//------ 8/25 -----
+// Closer concept
+// fixing 5 5 5 5 5 => wrap it inside another Closer function
+for (var i = 0; i < 5; i++) {
+  wrapper(i);
+  function wrapper(input) {
+    setTimeout(function () {
+      console.log(input);
+    }, input * 1000);
+  }
+}
+// Limit amount of time the Callback executing
+function fnLimiter(limit, callback) {
+  let countLimit = limit;
+  return function (...args) {
+    if (countLimit === 0) {
+      throw new Error('ran out limit');
+    } else {
+      return callback(...args);
+    }
+  };
+}
+const fn = fnLimiter(3, (a, b) => a * b);
+fn(2, 6); //12
+fn(5, 1); //5
+fn(4, 8); //32
+fn(1, 5); //error
+
+// implement a function to flat the array to 1D
+const arr = [[10, [18, 45, [79]]], 20, [30, 33], 40];
+// result: [10,18,45,79,20,30,33,40]
+function flat(arr) {
+  let result = [];
+  helpFlat(arr);
   return result;
+
+  function helpFlat(arr) {
+    arr.forEach((item) => {
+      if (Array.isArray(item)) {
+        helpFlat(item);
+      } else {
+        result.push(item);
+      }
+    });
+  }
 }
-
-add(1); // returns 1
-add(1, 2); // returns 3
-add(1, 2, 3, 4, 5); // returns 15
-
-// spread operator
-function add(a, b, c) {
-  return a + b + c;
+// implement Currying function
+console.log(mul(2)(3)(4)); //24
+function mul(num) {
+  return function (num2) {
+    return function (num3) {
+      return num * num2 * num3;
+    };
+  };
 }
-const arr = [1, 2, 3];
-
-add(...arr);
