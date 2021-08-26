@@ -454,4 +454,26 @@ myList.appendChild(newLi);
 
 - you cannot do anything in the client side during the server side error, just try again.
 
-3. 
+---
+
+8/25:
+
+1. what is the difference?
+
+2. es5 prototype method, 
+
+3. press a, press b, calculate total, 
+
+4. single responsibility principle
+
+5. tab bootstrap, navagation tab
+
+6. if you have a big gap, what will you do?
+
+- good learner
+- learn new techonology every week, 
+- If you are willing to spend extra time to learn more to fill the gap.
+
+7. why do you use gitlab?
+
+8. 

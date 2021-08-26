@@ -109,3 +109,90 @@
 //   );
 // };
 
+// // --- 8/25 apple
+// import React from 'react';
+// import classnames from 'classnames';
+// // you should import `lodash` as a whole module
+// import lodash from 'lodash';
+// import axios from 'axios';
+
+// const ITEMS_API_URL = 'https://example.com/api/items';
+// const DEBOUNCE_DELAY = 500;
+
+// const mockApiCall = async (query) => {
+//   const res = await axios(`${ITEMS_API_URL}?q=${query}`);
+//   return res.data;
+// }
+
+// // the exported component can be either a function or a class
+
+// export default function Autocomplete({onSelectItem}) {
+//   const [userInput, setUserInput] = React.useState('');
+//   const [res, setRes] = React.useState([]);
+//   const [isLoading, setIsLoading] = React.useState(false);
+
+//   const timer = React.useRef(null);
+
+//   const handleChange = (e)=>{
+//     setUserInput(e.target.value);
+//     setRes([]);
+//     clearTimeout(timer.current);
+//   }
+
+//   React.useEffect(()=>{
+//     if(userInput){
+//       timer.current = setTimeout(async()=>{
+//         setIsLoading(true);
+//         const apiData = await mockApiCall(userInput);
+//         setRes(apiData);
+//         setIsLoading(false);
+//       },DEBOUNCE_DELAY)
+//     }
+//   },[userInput]);
+
+//   const loadingClass = isLoading ? 'is-loading' : null
+
+//   return (
+//     <div className="wrapper">
+//       <div className={`control ${loadingClass}`}>
+//         <input type="text" className="input" value={userInput} onChange={handleChange}/>
+//       </div>
+//       {
+//         res.length?
+//           <div className="list is-hoverable">
+//             {
+//               res.map(el =>{
+//                 return <a className='list-item' onClick={()=>onSelectItem(el)}>{el}</a>
+//               })
+//             }
+//           </div>
+//           :
+//           null
+//       }
+//     </div>
+//   );
+// }
+
+
+// // algo
+// function solution(A, B, N) {
+//   // write your code in JavaScript (Node.js 8.9.4)
+//   const countConnected = {};
+//   A.forEach(end => {
+//       countConnected[end] = (countConnected[end] || 0) + 1;
+//   });
+//   B.forEach(end => {
+//       countConnected[end] = (countConnected[end] || 0) + 1;
+//   });
+//   let largestConnections = 0;
+//   for (let i = 0; i < A.length; i++) {
+//       largestConnections = Math.max(
+//           largestConnections,
+//           countConnected[A[i]] + countConnected[B[i]] - 1
+//       );
+//   }
+//   return largestConnections;
+// }
+
+
+// ----- 8/26 -----·
