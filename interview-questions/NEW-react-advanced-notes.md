@@ -476,4 +476,23 @@ myList.appendChild(newLi);
 
 7. why do you use gitlab?
 
-8. 
+
+--- 
+
+8/26:
+
+1. What is a good test?
+- the percentage is not very important.
+- It is about testing all sceinario.
+- 
+
+2. how do yu organize your css file?
+- global css file ( index.css/styles.css )
+- css-reset/variables/css-normalize/css-module
+- BEM naming
+
+3. selectAll fucntion
+- demo component
+- ignore id
+- do not use ... in this.setState
+- 
