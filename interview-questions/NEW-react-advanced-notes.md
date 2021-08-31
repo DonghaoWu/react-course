@@ -414,19 +414,19 @@ myList.appendChild(newLi);
 
 6. root - window - document - html - body - div - p
 
-
 ---
 
 8/24
 
 1. RESTful api:
+
 - client and server are totally seperated.
 
 - Using Http/Https with stateless communication
 
 - server will not remember your info, just return the response instead.
 
-- endpoint can self explained. 
+- endpoint can self explained.
 - api/users, every api can handle a resource.
 
 - get/post/put/delete
@@ -460,9 +460,9 @@ myList.appendChild(newLi);
 
 1. what is the difference?
 
-2. es5 prototype method, 
+2. es5 prototype method,
 
-3. press a, press b, calculate total, 
+3. press a, press b, calculate total,
 
 4. single responsibility principle
 
@@ -471,28 +471,93 @@ myList.appendChild(newLi);
 6. if you have a big gap, what will you do?
 
 - good learner
-- learn new techonology every week, 
+- learn new techonology every week,
 - If you are willing to spend extra time to learn more to fill the gap.
 
 7. why do you use gitlab?
 
-
---- 
+---
 
 8/26:
 
 1. What is a good test?
+
 - the percentage is not very important.
 - It is about testing all sceinario.
-- 
+-
 
 2. how do yu organize your css file?
+
 - global css file ( index.css/styles.css )
 - css-reset/variables/css-normalize/css-module
 - BEM naming
 
 3. selectAll fucntion
+
 - demo component
 - ignore id
 - do not use ... in this.setState
-- 
+- ***
+
+8/31:
+
+1. What is the difference between double equal and triple equals?
+2. What is the difference between let, const and var?
+3. Could you explain event bublling and event delegation? Example.
+4. What is hoisting?
+5. What is the prototype design pattern?
+6. share your sceent in chat.
+7. Can you explain closure?
+
+8. codesandbox
+
+9. Do you know css specity?
+10. How to calculate css specity?
+11. Do you know the concept pf Tweening?
+12. What is css flexbox?
+13. Do you know the display: none and visibility:hidden
+14. What is the difference between inline and block?
+15. Do you know Css box model?
+16. Can you explain the latest HTML feature?
+17. Have you used localStorage and sessionStorage?
+18. What is Virtual dom and real dom?
+19. Do you know promise? expample.
+20. What is distructoring? Example.
+21. Do you know controlled and uncontrolled component?
+22. What is the different between function component and class component?
+23. Do you know any else framwork? What is the diffrence between Angular and React?
+24. What is the pros and cons about React?
+25. difference between state and props?
+26. stateful component and stateless component?
+27. explain react lifecycle phase and methods?
+28.
+
+```js
+//  What will the following code output?
+// Q1
+console.log(0.1 + 0.2 === 0.3);
+
+// Q2
+const arr = [1, 22, 33, 4444];
+for (var i = 0; i < arr.length; i++) {
+  setTimeout(() => {
+    console.log('Index: ' + i + ' ' + arr[i]);
+  }, 1000);
+}
+
+// Q3
+// can youwrite dowm the example for closure?
+
+// Q4
+// remove the duplicate items in an array and sort the array in ascending order.
+let arr = [1, 1, 2, , 5, 10, 6, 5, 2];
+
+// input: 'Words'
+// output: 'WordsWords'
+```
+
+```js
+// technical question part two
+// Test : add unit test for `<User />`
+// Using the provide endpoint, 
+```
