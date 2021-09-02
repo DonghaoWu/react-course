@@ -202,7 +202,7 @@ $nav-margin-secondary: ($nav-margin-primary * 5);
 
 10. imports.
 
-- create a new file `foudation/_variables.scss`
+- create a new file `base/_variables.scss`
 
 ```scss
 $color-primary: yellow;
@@ -215,7 +215,7 @@ $nav-margin-primary: 30px;
 $nav-margin-secondary: 100px;
 ```
 
-- create a new file `foundation/_mixins.scss`
+- create a new file `base/_mixins.scss`
 
 ```scss
 @import 'variables';
@@ -249,8 +249,8 @@ $nav-margin-secondary: 100px;
 - main.scss
 
 ```scss
-@import 'foundation/variables';
-@import 'foundation/mixins';
+@import 'base/variables';
+@import 'base/mixins';
 
 *,
 *::after,
