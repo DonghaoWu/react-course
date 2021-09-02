@@ -4,10 +4,10 @@
 $ mkdir sass-demo
 $ cd sass-demo
 $ npm init -y
-$ npm i node-sass --save-dev
 $ touch .gitignore
 $ touch index.html
 $ touch main.scss
+$ npm i node-sass --save-dev
 ```
 
 ```bash
@@ -198,4 +198,76 @@ nav {
 
 ```scss
 $nav-margin-secondary: ($nav-margin-primary * 5);
+```
+
+10. imports.
+
+- create a new file `foudation/_variables.scss`
+
+```scss
+$color-primary: yellow;
+$bullet-color: green;
+$text-color-primary: red;
+$text-color-secondary: blue;
+$hover-background-color: grey;
+
+$nav-margin-primary: 30px;
+$nav-margin-secondary: 100px;
+```
+
+- create a new file `foundation/_mixins.scss`
+
+```scss
+@import 'variables';
+
+@mixin nav-setup($myMargin) {
+  margin: $myMargin;
+  background-color: $color-primary;
+
+  li {
+    color: $bullet-color;
+
+    &:first-child {
+      color: $text-color-primary;
+    }
+
+    &:last-child {
+      color: $text-color-secondary;
+    }
+
+    &:hover {
+      background-color: $hover-background-color;
+    }
+
+    a {
+      color: $text-color-primary;
+    }
+  }
+}
+```
+
+- main.scss
+
+```scss
+@import 'foundation/variables';
+@import 'foundation/mixins';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+nav {
+  @include nav-setup($nav-margin-primary);
+}
+
+.normal-nav-class {
+  @include nav-setup($nav-margin-secondary);
+
+  background-color: darken($color-primary, 20%);
+}
 ```
